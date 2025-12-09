@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión</title>
+    <link rel="icon" type="image/png" href="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg">
+</head>
+<body>
+    <div class="login-bg">
+      <div class="login-card">
+        <form (ngSubmit)="login()" *ngIf="showLogin; else registerForm">
+          <h2>Bienvenido</h2>
+          <div class="input-group">
+            <label for="email">
+              Correo electrónico
+              <span *ngIf="errorMsg" class="inline-error"> - {{ errorMsg }}</span>
+
+            </label>
+            <input
+              id="email"
+              type="email"
+              [(ngModel)]="email"
+              name="email"
+              required
+              autocomplete="email"
+              [ngClass]="{'input-error': emailError}"
+            />
+          </div>
+          <div class="input-group">
+            <label for="password">
+              Contraseña
+              <span *ngIf="passwordError" class="inline-error"> - {{ passwordError }}</span>
+            </label>
+            <input
+              id="password"
+              type="password"
+              [(ngModel)]="password"
+              name="password"
+              required
+              autocomplete="current-password"
+              [ngClass]="{'input-error': passwordError}"
+            />
+          </div>
+          <div class="forgot-link" (click)="forgotPassword()">¿Olvidaste tu contraseña?</div>
+          <button class="login-btn" type="submit">Iniciar sesión</button>
+          <div class="or-divider"><span>O</span></div>
+          <button type="button" class="google-btn" (click)="loginWithGoogle()">
+            Iniciar sesión con Google
+          </button>
+          <div class="register-link">
+            ¿No tienes cuenta?
+            <span class="register-action" (click)="showRegisterForm()">Regístrate</span>
+          </div>
+          <div *ngIf="!emailError && !passwordError && errorMsg" class="error-msg">{{ errorMsg }}</div>
+        </form>
+        <ng-template #registerForm>
+          <form (ngSubmit)="register()">
+            <h2>Crear cuenta</h2>
+            <div class="input-group">
+              <label for="nombre">Nombre</label>
+              <input id="nombre" type="text" [(ngModel)]="nombre" name="nombre" required autocomplete="given-name" />
+            </div>
+            <div class="input-group">
+              <label for="apellido">Apellido</label>
+              <input id="apellido" type="text" [(ngModel)]="apellido" name="apellido" required autocomplete="family-name" />
+            </div>
+            <div class="input-group">
+              <label for="reg-email">Correo electrónico</label>
+              <input id="reg-email" type="email" [(ngModel)]="email" name="regEmail" required autocomplete="email" />
+            </div>
+            <div class="input-group">
+              <label for="reg-password">Contraseña</label>
+              <input id="reg-password" type="password" [(ngModel)]="password" name="regPassword" required autocomplete="new-password" />
+            </div>
+            <div class="input-group">
+              <label for="ver-password">Verificar contraseña</label>
+              <input id="ver-password" type="password" [(ngModel)]="verPassword" name="verPassword" required autocomplete="new-password" />
+            </div>
+            <div class="forgot" (click)="showLoginForm()">¿Ya tienes cuenta? Inicia sesión</div>
+            <button class="login-btn" type="submit">Registrarse</button>
+            <div *ngIf="errorMsg" class="error-msg">{{ errorMsg }}</div>
+          </form>
+        </ng-template>
+      </div>
+    </div>
+    <div class="modal-bg" *ngIf="showResetModal">
+      <div class="modal-card">
+        <h3>¡Correo enviado!</h3>
+        <p>{{ resetMsg }}</p>
+        <button class="modal-btn" (click)="showResetModal = false">Aceptar</button>
+      </div>
+    </div>
+</body>
+</html>
