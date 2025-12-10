@@ -17,7 +17,13 @@ export const routes: Routes = [
   { path: 'programmer', component: ProgrammerPortfolioComponent, canActivate: [roleGuard], data: { role: 'programmer' } },
   { path: 'user', component: UserDashboardComponent, canActivate: [roleGuard], data: { role: 'user' } },
   { path: 'unauthorized', component: UnauthorizedComponent },
-  { path: '', redirectTo: '/Informative', pathMatch: 'full' },
-  { path: '**', redirectTo: '/informative' } // Wildcard route for any unmatched URLs
+    { path: 'login', component: LoginComponent }, // Added login route
+  { path: '', redirectTo: '/informative', pathMatch: 'full' },
+   // Wildcard route for any unmatched URLs
+  {path: 'Contacto', component: ContactoComponent},
+  {path: 'Equipo', component: EquipoComponent},
 
+  //no se por que no redirecciona a proyectos//
+  {path: 'proyectos', component: ProyectosComponent},
+  { path: '**', redirectTo: '/informative' }
 ];

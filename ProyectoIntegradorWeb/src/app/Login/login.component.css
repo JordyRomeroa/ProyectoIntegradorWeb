@@ -1,56 +1,77 @@
+/* ========================================================= */
+/*   ESTILO LOGIN ADAPTADO A LA WEB PRINCIPAL                */
+/* ========================================================= */
+
+/* 🔑 **AJUSTE CLAVE:** Añade esto al principio de tu archivo CSS 
+   para solucionar problemas de ancho y padding excesivo. */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Fondo con patrón tipo grid, igual que la página principal */
 .login-bg {
   min-height: 100vh;
-  width: 100vw;
-  background: linear-gradient(120deg, #f5f7fa 0%, #c3cfe2 100%);
+  /* ⚠️ Se elimina o cambia 'width: 100vw;' para evitar scroll horizontal. */
+  /* Lo dejamos en 'width: 100%;' o simplemente se omite. */
+  width: 100%; 
+  background-image: radial-gradient(#e5e5e5 1px, transparent 1px);
+  background-size: 20px 20px;
+
+  /* Centrado */
   display: flex;
   align-items: center;
   justify-content: center;
+  
+  /* El padding ahora no causará overflow gracias al box-sizing: border-box */
+  padding: 40px; 
+  animation: fade-in 0.8s ease-out;
 }
 
+/* ➡️ Esta clase ya estaba bien para el centrado del contenido de .login-card */
 .login-container {
-  min-height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #43cea2 0%, #185a9d 100%);
+  /* Se asegura que el contenido (la tarjeta) esté centrado horizontalmente */
+  justify-content: center; 
+  /* Se asegura que el contenido (la tarjeta) esté centrado verticalmente (si es necesario) */
+  align-items: center; 
+  /* Aseguramos que ocupe todo el ancho disponible para centrar su contenido */
+  width: 100%; 
 }
 
+/* Tarjeta del login - No necesita cambios, está bien definida */
 .login-card {
-  background: #fff;
-  padding: 2.5rem 2rem 2rem 2rem;
-  border-radius: 28px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  background: white;
+  padding: 36px 40px;
+  border-radius: 24px;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+  animation: pop 0.6s ease-out;
+
+  width: 380px;
+  max-width: 95vw;
   text-align: center;
-  min-width: 340px;
-  max-width: 90vw;
-  width: 370px;
-  animation: cardPop 0.8s cubic-bezier(.68,-0.55,.27,1.55);
 }
 
-@keyframes cardPop {
-  0% { transform: scale(0.8); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
-}
-
-h2 {
+/* ... El resto de tu CSS sigue igual ... */
+/* Título del login */
+.login-card h2 {
   margin-bottom: 1.5rem;
   color: #222;
-  font-weight: 700;
-  font-size: 1.7rem;
+  font-weight: 800;
+  font-size: 1.9rem;
 }
 
+/* Inputs */
 .input-group {
   margin-bottom: 1.2rem;
   text-align: left;
 }
 
 .input-group label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 6px;
   display: block;
-  margin-bottom: 0.4rem;
-  font-size: 1.05rem;
-  color: #222;
-  font-weight: 500;
-  padding-left: 2px;
 }
 
 input[type="text"],
@@ -59,158 +80,122 @@ input[type="password"] {
   width: 100%;
   padding: 0.75rem 1rem;
   border: 1.5px solid #ddd;
-  border-radius: 8px;
+  border-radius: 10px;
   font-size: 1rem;
-  margin-bottom: 0;
   outline: none;
+  transition: 0.25s ease;
   background: #fff;
-  color: #222;
-  transition: border 0.2s, background 0.2s;
-  box-sizing: border-box;
 }
 
-input[type="email"]:focus,
-input[type="password"]:focus {
-  border: 1.5px solid #4285f4;
-  background: #f0f8ff;
+input:focus {
+  border-color: #222;
+  background: #f8f8f8;
 }
 
-input[disabled] {
-  background: #f7f7f7;
-  color: #aaa;
-}
-
-.forgot {
-  text-align: right;
-  font-size: 0.95rem;
-  color: #4285f4;
-  margin-bottom: 1.2rem;
-  cursor: pointer;
-  user-select: none;
-}
-
-.forgot-link {
-  text-align: right;
-  font-size: 0.98rem;
-  color: #4285f4;
-  margin-bottom: 1rem;
-  cursor: pointer;
-  user-select: none;
-  transition: color 0.2s;
-}
-
-.forgot-link:hover {
-  color: #185a9d;
-  text-decoration: underline;
-}
-
-.login-btn {
-  width: 100%;
-  background: #e60023;
-  color: #fff;
-  border: none;
-  border-radius: 20px;
-  padding: 0.8rem 0;
-  font-size: 1.08rem;
-  font-weight: 600;
-  cursor: not-allowed;
-  margin-bottom: 1.2rem;
-  opacity: 0.7;
-}
-
-.or-divider {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  margin: 1.2rem 0;
-  color: #888;
-  font-size: 0.95rem;
-}
-.or-divider::before,
-.or-divider::after {
-  content: '';
-  flex: 1;
-  border-bottom: 1px solid #eee;
-  margin: 0 8px;
-}
-
-.google-btn {
-  width: 100%;
-  background: linear-gradient(90deg, #4285f4 0%, #185a9d 100%);
-  color: #fff;
-  border: none;
-  border-radius: 20px;
-  padding: 0.8rem 0;
-  font-size: 1.08rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: box-shadow 0.2s, background 0.2s;
-  box-shadow: 0 2px 8px rgba(66,133,244,0.12);
-  margin-bottom: 1.2rem;
-  letter-spacing: 0.5px;
-}
-
-.google-btn:hover {
-  background: linear-gradient(90deg, #185a9d 0%, #4285f4 100%);
-  box-shadow: 0 4px 16px rgba(66,133,244,0.18);
-}
-
-.signup {
-  font-size: 1rem;
-  color: #888;
-  margin-top: 0.5rem;
-}
-
-.signup-link {
-  color: #4285f4;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.register-link {
-  text-align: center;
-  margin-top: 1.2rem;
-  font-size: 1rem;
-  color: #444;
-}
-
-.register-action {
-  color: #4285f4;
-  font-weight: 600;
-  cursor: pointer;
-  margin-left: 4px;
-  transition: color 0.2s;
-}
-
-.register-action:hover {
-  color: #185a9d;
-  text-decoration: underline;
-}
-
+/* Errores */
 .field-error {
   color: #e60023;
-  font-size: 0.97rem;
-  margin-top: 0.2rem;
-  margin-bottom: -0.7rem;
-  text-align: left;
-  padding-left: 2px;
+  font-size: 0.94rem;
+  margin-top: 3px;
 }
 
 .input-error {
   border: 1.5px solid #e60023 !important;
   background: #fff0f3 !important;
 }
-.inline-error {
-  color: #e60023;
-  font-size: 0.98rem;
-  font-weight: 400;
-  margin-left: 4px;
-  text-transform: none;
+
+/* Link "Olvidé mi contraseña" */
+.forgot-link {
+  display: block;
+  text-align: right;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  color: #007bff;
+  cursor: pointer;
 }
 
+.forgot-link:hover {
+  text-decoration: underline;
+}
+
+/* BOTÓN PRINCIPAL (estilo igual que .btn-dark del sitio) */
+.login-btn {
+  width: 100%;
+  padding: 14px 0;
+  background: black;
+  color: white;
+  border-radius: 8px;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: .25s ease;
+}
+
+.login-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+}
+
+/* Separador */
+.or-divider {
+  margin: 1.6rem 0 1rem;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.or-divider::before,
+.or-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #ddd;
+}
+
+/* Botón Google estilo matching */
+.google-btn {
+  width: 100%;
+  padding: 14px 0;
+  border-radius: 8px;
+  border: none;
+
+  background: #e5e5e5;
+  color: #222;
+
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+  transition: 0.25s ease;
+}
+
+.google-btn:hover {
+  background: #dcdcdc;
+  transform: translateY(-3px);
+}
+
+/* Registro */
+.register-link {
+  margin-top: 20px;
+  font-size: 1rem;
+}
+
+.register-action {
+  color: #007bff;
+  font-weight: 600;
+  cursor: pointer;
+}
+.register-action:hover {
+  text-decoration: underline;
+}
+
+/* Modales */
 .modal-bg {
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
+  inset: 0;
   background: rgba(0,0,0,0.25);
   display: flex;
   align-items: center;
@@ -219,44 +204,48 @@ input[disabled] {
 }
 
 .modal-card {
-  background: #fff;
+  background: white;
+  padding: 30px 38px;
   border-radius: 18px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
-  padding: 2rem 2.5rem;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+  animation: pop 0.4s ease-out;
   text-align: center;
-  min-width: 300px;
-  max-width: 90vw;
-  animation: cardPop 0.5s;
-}
-
-.modal-card h3 {
-  color: #185a9d;
-  margin-bottom: 1rem;
-  font-size: 1.3rem;
 }
 
 .modal-btn {
-  margin-top: 1.2rem;
-  background: #4285f4;
-  color: #fff;
-  border: none;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: black;
+  color: white;
   border-radius: 8px;
-  padding: 0.6rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 600;
+  border: none;
   cursor: pointer;
-  transition: background 0.2s;
+  font-weight: 600;
 }
 
 .modal-btn:hover {
-  background: #185a9d;
+  transform: translateY(-2px);
 }
 
+/* Modo oscuro */
 body.dark-mode {
-  background: #18181b !important;
-  color: #f1f5f9 !important;
+  background: #111;
+  color: #eee;
 }
-body.dark-mode .ajuste-card {
+
+body.dark-mode .login-card {
   background: #23272f;
   color: #f1f5f9;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.4);
+}
+
+body.dark-mode input {
+  background: #2d2f36;
+  border-color: #444;
+  color: #f1f5f9;
+}
+
+body.dark-mode input:focus {
+  background: #3a3d45;
+  border-color: #fff;
 }
