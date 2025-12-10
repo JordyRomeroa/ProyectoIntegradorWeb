@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterModule } from '@angular/router'; // Import RouterModule
 
 @Component({
   selector: 'app-informative-page',
   standalone: true,
+  imports: [RouterModule], // Add RouterModule to imports
   templateUrl: './informative.component.html',
   styleUrls: ['./informative.component.css']
 })
