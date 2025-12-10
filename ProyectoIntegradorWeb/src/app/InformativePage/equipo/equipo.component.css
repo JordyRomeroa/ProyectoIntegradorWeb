@@ -1,0 +1,244 @@
+/* ======================================================= */
+/*               FONDO GLOBAL PROFESIONAL                  */
+/* ======================================================= */
+.page-wrap {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #eef2ff, #ffffff);
+    padding: 40px 0 120px 0;
+    font-family: "Inter", sans-serif;
+}
+
+/* ======================================================= */
+/*                   TÍTULOS GENERALES                     */
+/* ======================================================= */
+.main-title {
+    text-align: center;
+    font-size: 42px;
+    font-weight: 900;
+    color: #1e293b;
+    margin-bottom: 10px;
+}
+.main-subtitle {
+    text-align: center;
+    color: #475569;
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+
+/* PANEL */
+.panel {
+    width: 95%;
+    max-width: 1200px;
+    background: #ffffffcc;
+    backdrop-filter: blur(12px);
+    padding: 40px;
+    margin: 0 auto 60px auto;
+    border-radius: 25px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.07);
+}
+.panel-title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 35px;
+}
+
+/* ======================================================= */
+/*            TARJETAS UNIFICADAS (Admins + Program.)      */
+/* ======================================================= */
+.card,
+.prog-card {
+    width: 260px;
+    min-height: 330px;
+    background: white;
+    padding: 22px;
+    border-radius: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.35s ease;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Imagen uniforme premium */
+.card img,
+.prog-card img {
+    width: 120px;
+    height: 120px;
+    border-radius: 16px;
+    object-fit: cover;
+    margin-bottom: 15px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+}
+
+/* Textos */
+.card h3,
+.prog-card h3 {
+    font-size: 18px;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 4px;
+}
+.card p,
+.prog-card p {
+    font-size: 14px;
+    color: #475569;
+}
+
+/* Hover */
+.card:hover,
+.prog-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 20px 45px rgba(0,0,0,0.18);
+}
+
+/* Contenedor admins */
+.admin-container {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
+
+/* ======================================================= */
+/*                  CARRUSEL PROFESIONAL                   */
+/* ======================================================= */
+.carousel-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+.carousel-container {
+    width: 900px;
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+#carousel {
+    display: flex;
+    gap: 40px;
+    transition: transform 0.6s ease;
+}
+
+/* Flechas */
+.arrow {
+    width: 48px;
+    height: 48px;
+    background: #1e293b;
+    color: white;
+    border-radius: 50%;
+    border: none;
+    font-size: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.arrow:hover {
+    transform: scale(1.15);
+    background: #0f172a;
+}
+
+
+/* ======================================================= */
+/*                    MODAL PREMIUM                        */
+/* ======================================================= */
+
+.modal-bg {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.35s ease;
+    z-index: 80;
+}
+.modal-bg.show { opacity: 1; pointer-events: auto; }
+
+.modal-pro {
+    position: fixed;
+    top: 50%; left: 50%;
+    width: 440px;
+    max-width: 92%;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(18px);
+    padding: 40px;
+    border-radius: 28px;
+    transform: translate(-50%, -50%) scale(0.7);
+    opacity: 0;
+    transition: 0.35s ease;
+    z-index: 100;
+}
+.modal-pro.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Foto */
+.modal-photo {
+    width: 130px;
+    height: 130px;
+    border-radius: 18px;
+    object-fit: cover;
+    margin-bottom: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* Títulos */
+.modal-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+.modal-header h2 {
+    font-size: 26px;
+    font-weight: 900;
+    color: #1e293b;
+}
+.modal-role-badge {
+    background: #e8eaff;
+    padding: 6px 16px;
+    border-radius: 12px;
+    font-size: 14px;
+    color: #4c52d9;
+}
+
+/* Listas */
+.project-list li {
+    margin-bottom: 6px;
+    color: #475569;
+}
+
+/* Botón */
+.close-btn-pro {
+    width: 100%;
+    padding: 14px;
+    background: #1e293b;
+    color: white;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+}
+.close-btn-pro:hover {
+    background: #0f172a;
+}
+
+/* ========= RESPONSIVE ========== */
+@media (max-width: 768px) {
+    .main-title { font-size: 34px; }
+    .prog-card { width: 220px; }
+    .arrow { width: 40px; height: 40px; }
+}
+@media (max-width: 600px) {
+    .carousel-wrapper { flex-direction: column; }
+    .arrow { order: 2; }
+    .carousel-container { order: 1; }
+}

@@ -1,0 +1,105 @@
+<div class="contact-container">
+
+  <!-- ENCABEZADO -->
+  <section class="contact-hero fade">
+    <h1>Contacto</h1>
+    <p class="hero-sub">
+      ¿Tienes dudas, deseas una asesoría o quieres colaborar con nosotros?<br>
+      ¡Estamos aquí para ayudarte!
+    </p>
+  </section>
+
+  <!-- TARJETAS DE CONTACTO -->
+  <section class="contact-cards fade">
+    <div class="contact-card pop">
+      <i class="fa-solid fa-envelope"></i>
+      <h3>Correo Electrónico</h3>
+      <p>@gmail.com</p>
+    </div>
+
+    <div class="contact-card pop">
+      <i class="fa-brands fa-whatsapp"></i>
+      <h3>WhatsApp</h3>
+      <p>+593 983 640 353</p>
+    </div>
+
+    <div class="contact-card pop">
+      <i class="fa-solid fa-location-dot"></i>
+      <h3>Ubicación</h3>
+      <p>Cuenca, Ecuador · Atención online</p>
+    </div>
+
+    <div class="contact-card pop">
+      <i class="fa-solid fa-clock"></i>
+      <h3>Horario</h3>
+      <p>Lunes – Sábado  · 09:00 a 18:00</p>
+    </div>
+  </section>
+
+  <!-- FORMULARIO -->
+  <section class="contact-form fade">
+    <h2>Envíanos un Mensaje</h2>
+
+    <form (submit)="enviarFormulario()">
+
+      <div class="form-group">
+        <label>Nombre Completo</label>
+        <input type="text" required placeholder="Tu nombre...">
+      </div>
+
+      <div class="form-group">
+        <label>Correo Electrónico</label>
+        <input type="email" required placeholder="tuemail@ejemplo.com">
+      </div>
+
+      <div class="form-group">
+        <label>Mensaje</label>
+        <textarea required placeholder="Escribe tu mensaje aquí..."></textarea>
+      </div>
+
+      <button class="btn-dark" type="submit">
+        <i class="fa-solid fa-paper-plane"></i> Enviar Mensaje
+      </button>
+
+    </form>
+  </section>
+
+  <!-- MAPA -->
+  <section class="map-section fade">
+    <h2>Nuestra Ubicación</h2>
+
+    <div class="map-container pop">
+      <iframe
+        src="https://www.google.com/maps/place/Universidad+Polit%C3%A9cnica+Salesiana+del+Ecuador/@-2.8863481,-78.9908114,17z/data=!4m6!3m5!1s0x91cd1826d90c7e47:0x8eb47b6b0138cb74!8m2!3d-2.8863481!4d-78.9892684!16s%2Fm%2F0cpdx8q?entry=ttu&g_ep=EgoyMDI1MTIwNy4wIKXMDSoASAFQAw%3D%3D"
+        allowfullscreen=""
+        loading="lazy">
+      </iframe>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section fade">
+    <h2>Preguntas Frecuentes</h2>
+
+    <div class="faq-item" *ngFor="let f of faqs; let i=index">
+
+      <div class="faq-header" (click)="toggleFAQ(i)">
+        <h3>{{ f.q }}</h3>
+        <i class="fa-solid"
+           [class.fa-chevron-down]="faqIndex !== i"
+           [class.fa-chevron-up]="faqIndex === i"></i>
+      </div>
+
+      <div class="faq-body" [class.open]="faqIndex === i">
+        <p>{{ f.a }}</p>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<!-- BOTÓN FLOTANTE WHATSAPP -->
+<div class="whatsapp-float bounce" (click)="abrirWhatsApp()">
+  <i class="fa-brands fa-whatsapp"></i>
+</div>
