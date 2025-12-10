@@ -1,24 +1,24 @@
 <header class="navbar">
 
   <div class="nav-left">
-    <h1 class="logo">DevHub</h1>
+    <h1 class="logo">RinconDev</h1>
     <p class="subtitle">Proyectos & Asesorías</p>
   </div>
 
   <nav class="nav-menu">
-    <a class="active"><i class="fa-solid fa-house"></i> Inicio</a>
-    <a><i class="fa-solid fa-diagram-project"></i> Proyectos</a>
-    <a><i class="fa-solid fa-users"></i> Equipo</a>
-    <a><i class="fa-solid fa-arrow-right-to-bracket"></i> Contacto</a>
+    <a class="active" (click)="goInicio()"><i class="fa-solid fa-house"></i> Inicio</a>
+    <a (click)="goProyectos()"><i class="fa-solid fa-diagram-project"></i> Proyectos</a>
+    <a (click)="goEquipo()"><i class="fa-solid fa-users"></i> Equipo</a>
+    <a (click)="goContacto()"><i class="fa-solid fa-arrow-right-to-bracket"></i> Contacto</a>
   </nav>
 
-  <div class="nav-user"><i class="fa-solid fa-user"></i></div>
+  <div class="nav-user" (click)="goLogin()">
+    <i class="fa-solid fa-user"></i>
+  </div>
 
 </header>
 
-<!-- ====================== -->
-<!-- CONTENIDO PERFECTAMENTE CENTRADO -->
-<!-- ====================== -->
+
 <main class="content">
 
   <!-- HERO -->
@@ -36,8 +36,8 @@
     </p>
 
     <div class="hero-buttons">
-      <button class="btn-dark"><i class="fa-solid fa-code"></i> Ver Proyectos</button>
-      <button class="btn-light-border"><i class="fa-solid fa-user-check"></i> Solicitar Asesoría</button>
+      <button class="btn-dark" (click)="goProyectos()"><i class="fa-solid fa-code"></i> Ver Proyectos</button>
+      <button class="btn-light-border" (click)="goAsesoria()"><i class="fa-solid fa-user-check"></i> Solicitar Asesoría</button>
     </div>
 
     <div class="stats">
@@ -54,14 +54,14 @@
 
     <div class="team-grid">
 
-      <div class="team-card">
+      <div class="team-card" (click)="goEquipo()">
         <img src="https://wallpapers.com/images/hd/cute-baby-pikachu-zuh728pq8xahoj3w.jpg">
         <h3>Jordy Romero</h3>
         <p class="role">Lead Developer & Co-founder</p>
         <p class="desc">Experta en arquitectura de software y sistemas distribuidos. +10 años de experiencia.</p>
       </div>
 
-      <div class="team-card">
+      <div class="team-card" (click)="goEquipo()">
         <img src="https://i.pinimg.com/736x/13/3a/02/133a020be0e51139e99cf837d72f114d.jpg">
         <h3>Nayeli Barbecho</h3>
         <p class="role">Technical Lead & Co-founder</p>
@@ -78,36 +78,36 @@
 
     <div class="projects-grid">
 
-      <div class="project-card">
+      <div class="project-card" (click)="goProyectos()">
         <h3>E-Commerce Platform</h3>
         <p class="author">Por María González</p>
         <p class="desc">Plataforma completa con Stripe, panel admin y dashboards.</p>
         <div class="tags"><span>Next.js</span><span>TypeScript</span><span>Stripe</span></div>
         <div class="project-buttons">
-          <button class="btn-light-border">Código</button>
-          <button class="btn-dark">Demo</button>
+          <button class="btn-light-border" (click)="goProyectos(); $event.stopPropagation()">Código</button>
+          <button class="btn-dark" (click)="goProyectos(); $event.stopPropagation()">Demo</button>
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" (click)="goProyectos()">
         <h3>Task Management System</h3>
         <p class="author">Por Carlos Rodríguez</p>
         <p class="desc">Sistema colaborativo con chat interno y productividad.</p>
         <div class="tags"><span>React</span><span>Node.js</span><span>Socket.io</span></div>
         <div class="project-buttons">
-          <button class="btn-light-border">Código</button>
-          <button class="btn-dark">Demo</button>
+          <button class="btn-light-border" (click)="goProyectos(); $event.stopPropagation()">Código</button>
+          <button class="btn-dark" (click)="goProyectos(); $event.stopPropagation()">Demo</button>
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" (click)="goProyectos()">
         <h3>AI Content Generator</h3>
         <p class="author">Por María González</p>
         <p class="desc">Generador de contenido con Inteligencia Artificial.</p>
         <div class="tags"><span>Python</span><span>OpenAI</span><span>FastAPI</span></div>
         <div class="project-buttons">
-          <button class="btn-light-border">Código</button>
-          <button class="btn-dark">Demo</button>
+          <button class="btn-light-border" (click)="goProyectos(); $event.stopPropagation()">Código</button>
+          <button class="btn-dark" (click)="goProyectos(); $event.stopPropagation()">Demo</button>
         </div>
       </div>
 
@@ -124,37 +124,21 @@
   </p>
 
   <div class="cta-features">
-    <div class="feature">
-      <i class="fa-solid fa-user-check"></i>
-      <span>Asesorías Personalizadas</span>
-    </div>
-
-    <div class="feature">
-      <i class="fa-solid fa-users"></i>
-      <span>Comunidad Activa</span>
-    </div>
-
-    <div class="feature">
-      <i class="fa-solid fa-briefcase"></i>
-      <span>Proyectos Reales</span>
-    </div>
-
-    <div class="feature">
-      <i class="fa-solid fa-bolt"></i>
-      <span>Respuesta Rápida</span>
-    </div>
+    <div class="feature"><i class="fa-solid fa-user-check"></i><span>Asesorías Personalizadas</span></div>
+    <div class="feature"><i class="fa-solid fa-users"></i><span>Comunidad Activa</span></div>
+    <div class="feature"><i class="fa-solid fa-briefcase"></i><span>Proyectos Reales</span></div>
+    <div class="feature"><i class="fa-solid fa-bolt"></i><span>Respuesta Rápida</span></div>
   </div>
 
   <div class="cta-buttons improved-btns">
-    <button class="btn-dark big">Registrarse como Programador</button>
-    <button class="btn-light-border big">Solicitar Asesoría</button>
+    <button class="btn-dark big" (click)="goLogin()">Registrarse como Programador</button>
+    <button class="btn-light-border big" (click)="goAsesoria()">Solicitar Asesoría</button>
   </div>
 
 </section>
 
-
-  <!-- FOOTER -->
- <footer class="footer improved-footer fade">
+<!-- FOOTER -->
+<footer class="footer improved-footer fade">
 
   <div class="footer-container">
 
@@ -168,19 +152,19 @@
     <div class="footer-col">
       <h4>Enlaces Rápidos</h4>
       <ul>
-        <li><a>Inicio</a></li>
-        <li><a>Proyectos</a></li>
-        <li><a>Equipo</a></li>
-        <li><a>Contacto</a></li>
+        <li><a (click)="goInicio()">Inicio</a></li>
+        <li><a (click)="goProyectos()">Proyectos</a></li>
+        <li><a (click)="goEquipo()">Equipo</a></li>
+        <li><a (click)="goContacto()">Contacto</a></li>
       </ul>
     </div>
 
     <div class="footer-col">
       <h4>Recursos</h4>
       <ul>
-        <li><a>Iniciar Sesión</a></li>
-        <li><a>Registrarse</a></li>
-        <li><a>Documentación</a></li>
+        <li><a (click)="goLogin()">Iniciar Sesión</a></li>
+        <li><a (click)="goLogin()">Registrarse</a></li>
+        <li><a (click)="goContacto()">Contacto</a></li>
         <li><a>Ayuda</a></li>
       </ul>
     </div>
@@ -188,7 +172,7 @@
   </div>
 
   <div class="footer-bottom">
-    © 2025 <strong>DevHub</strong>. Todos los derechos reservados.
+    © 2025 <strong>RinconDev</strong>. Todos los derechos reservados.
   </div>
 
 </footer>

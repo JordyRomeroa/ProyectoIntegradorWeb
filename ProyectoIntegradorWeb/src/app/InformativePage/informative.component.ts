@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-informative-page',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./informative.component.css']
 })
 export class InformativeComponent implements OnInit {
+
+  constructor(private router: Router) {}
 
   ngOnInit() {
     this.animateCounters();
@@ -31,19 +34,18 @@ export class InformativeComponent implements OnInit {
     });
   }
 
-  abrirCuenta() {
-    console.log('Abrir panel de usuario');
-  }
 
-  verProyecto(nombre: string) {
-    console.log('Ver proyecto:', nombre);
-  }
+  goInicio() { this.router.navigate(['/informative']); }
+  goProyectos() { this.router.navigate(['/proyectos']); }
+  goEquipo() { this.router.navigate(['/Equipo']); }
+  goContacto() { this.router.navigate(['/Contacto']); }
+  goAsesoria() { this.router.navigate(['/asesoria']); }
+  goLogin() { this.router.navigate(['/login']); }
 
-  solicitarAsesoria() {
-    console.log('Solicitando asesoría...');
-  }
 
-  registrarProgramador() {
-    console.log('Registrando programador...');
-  }
+  abrirCuenta() { this.goLogin(); }
+  verProyecto(nombre: string) { this.goProyectos(); }
+  solicitarAsesoria() { this.goAsesoria(); }
+  registrarProgramador() { this.goLogin(); }
+
 }

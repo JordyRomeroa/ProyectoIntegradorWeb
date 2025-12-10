@@ -1,0 +1,96 @@
+<div class="asesoria-page">
+
+  <div class="asesoria-header">
+    <h1>Solicitar Asesoría</h1>
+    <p>
+      Agenda una sesión personalizada con un programador de nuestro equipo.
+      Elige la fecha, una hora disponible y cuéntanos brevemente en qué necesitas ayuda.
+    </p>
+  </div>
+
+  <div class="asesoria-layout">
+
+    <!-- Panel de datos de la asesoría -->
+    <div class="asesoria-card">
+
+      <h2 class="asesoria-card-title">Detalles de la solicitud</h2>
+
+      <!-- Programador -->
+      <div class="form-group">
+        <label for="asesoria-programmer" class="form-label">Programador</label>
+        <select id="asesoria-programmer" class="form-select">
+          <option value="Jordy Romero">Jordy Romero — Full Stack</option>
+          <option value="Nayeli Barbecho">Nayeli Barbecho — Frontend</option>
+          <option value="Carlos Rodríguez">Carlos Rodríguez — Backend</option>
+        </select>
+        <p class="form-help">
+          Escoge el colaborador con el que te gustaría agendar la asesoría.
+        </p>
+      </div>
+
+      <!-- Fecha -->
+      <div class="form-group">
+        <label for="asesoria-date" class="form-label">Fecha de la asesoría</label>
+        <input type="date" id="asesoria-date" class="form-input" />
+        <p class="form-help">
+          Solo se permiten asesorías de lunes a viernes. El calendario se ajusta automáticamente.
+        </p>
+      </div>
+
+      <!-- Hora -->
+      <div class="form-group">
+        <label for="asesoria-time" class="form-label">Hora disponible</label>
+        <select id="asesoria-time" class="form-select"></select>
+        <p id="asesoria-time-help" class="form-help">
+          Selecciona una fecha para ver los horarios disponibles.
+        </p>
+      </div>
+
+      <!-- Mensaje -->
+      <div class="form-group">
+        <label for="asesoria-message" class="form-label">Describe tu consulta</label>
+        <textarea id="asesoria-message" rows="5" class="form-textarea"
+          placeholder="Ejemplo: Tengo problemas con la autenticación en Angular y Firebase, me gustaría revisar el flujo de login y protección de rutas."></textarea>
+        <p class="form-help">
+          Sé lo más específico posible para que el programador pueda preparar la sesión.
+        </p>
+      </div>
+
+      <!-- Feedback -->
+      <div id="asesoria-feedback" class="feedback-box"></div>
+
+      <!-- Botón -->
+      <div class="form-actions">
+        <button type="button" class="btn-primary" onclick="enviarAsesoriaTS()">
+          Enviar solicitud
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Panel informativo lateral -->
+    <div class="asesoria-side">
+
+      <div class="side-card">
+        <h3>¿Cómo funciona la asesoría?</h3>
+        <ul class="side-list">
+          <li>Eliges el <strong>programador</strong> y un horario disponible.</li>
+          <li>Describes brevemente tu <strong>problema o idea</strong>.</li>
+          <li>El programador o un administrador puede <strong>aceptar o reagendar</strong> tu solicitud.</li>
+          <li>La confirmación se gestionará dentro del panel de la plataforma.</li>
+        </ul>
+      </div>
+
+      <div class="side-card">
+        <h3>Recomendaciones</h3>
+        <ul class="side-list">
+          <li>Adjunta enlaces a tu repositorio en el mensaje si es posible.</li>
+          <li>Ten tu entorno de desarrollo listo para compartir pantalla.</li>
+          <li>Revisa previamente los errores o logs que aparecen.</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+</div>
