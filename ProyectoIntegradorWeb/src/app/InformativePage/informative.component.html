@@ -1,250 +1,194 @@
-<div class="layout">
+<header class="navbar">
 
-  <!-- ====================== -->
-  <!-- SIDEBAR -->
-  <!-- ====================== -->
-  <aside class="sidebar">
-    <div>
-      <h1 class="logo">DevHub</h1>
-      <p class="subtitle">Proyectos & Asesorías</p>
+  <div class="nav-left">
+    <h1 class="logo">DevHub</h1>
+    <p class="subtitle">Proyectos & Asesorías</p>
+  </div>
 
-      <nav class="menu">
-        <a><i class="fa-solid fa-house"></i> Inicio</a>
-        <a><i class="fa-solid fa-diagram-project"></i> Proyectos</a>
-        <a><i class="fa-solid fa-users"></i> Equipo</a>
-        <a class="active"><i class="fa-solid fa-arrow-right-to-bracket"></i> Contacto</a>
-      </nav>
+  <nav class="nav-menu">
+    <a class="active"><i class="fa-solid fa-house"></i> Inicio</a>
+    <a><i class="fa-solid fa-diagram-project"></i> Proyectos</a>
+    <a><i class="fa-solid fa-users"></i> Equipo</a>
+    <a><i class="fa-solid fa-arrow-right-to-bracket"></i> Contacto</a>
+  </nav>
+
+  <div class="nav-user"><i class="fa-solid fa-user"></i></div>
+
+</header>
+
+<!-- ====================== -->
+<!-- CONTENIDO PERFECTAMENTE CENTRADO -->
+<!-- ====================== -->
+<main class="content">
+
+  <!-- HERO -->
+  <section class="hero fade">
+    <div class="badge">
+      <i class="fa-solid fa-wand-magic-sparkles"></i>
+      Plataforma de Desarrollo Profesional
     </div>
 
-    <div class="sidebar-buttons">
-      <button class="btn-dark">Iniciar Sesión</button>
-      <button class="btn-light">Registrarse</button>
+    <h1 class="hero-title">Construyendo el Futuro <br> Un Proyecto a la Vez</h1>
+
+    <p class="hero-text">
+      Explora proyectos innovadores, conecta con desarrolladores expertos y obtén asesorías personalizadas
+      para llevar tus habilidades al siguiente nivel.
+    </p>
+
+    <div class="hero-buttons">
+      <button class="btn-dark"><i class="fa-solid fa-code"></i> Ver Proyectos</button>
+      <button class="btn-light-border"><i class="fa-solid fa-user-check"></i> Solicitar Asesoría</button>
     </div>
-  </aside>
 
-  <!-- ====================== -->
-  <!-- CONTENIDO PRINCIPAL -->
-  <!-- ====================== -->
-  <main class="content">
+    <div class="stats">
+      <div class="stat-card"><h2>50+</h2><p>Proyectos Activos</p></div>
+      <div class="stat-card"><h2>20+</h2><p>Desarrolladores</p></div>
+      <div class="stat-card"><h2>200+</h2><p>Asesorías Realizadas</p></div>
+    </div>
+  </section>
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="badge">
-        <i class="fa-solid fa-wand-magic-sparkles"></i>
-        Plataforma de Desarrollo Profesional
+  <!-- EQUIPO -->
+  <section class="section fade">
+    <h2 class="section-title">Nuestro Equipo</h2>
+    <p class="section-sub">Conoce a los líderes que impulsan nuestra plataforma.</p>
+
+    <div class="team-grid">
+
+      <div class="team-card">
+        <img src="https://i.pinimg.com/736x/13/3a/02/133a020be0e51139e99cf837d72f114d.jpg">
+        <h3>Nayeli Barbecho</h3>
+        <p class="role">Lead Developer & Co-founder</p>
+        <p class="desc">Experta en arquitectura de software y sistemas distribuidos. +10 años de experiencia.</p>
       </div>
 
-      <h1 class="hero-title">
-        Construyendo el Futuro <br> Un Proyecto a la Vez
-      </h1>
+      <div class="team-card">
+        <img src="https://wallpapers.com/images/hd/cute-baby-pikachu-zuh728pq8xahoj3w.jpg">
+        <h3>Jordy Romero</h3>
+        <p class="role">Technical Lead & Co-founder</p>
+        <p class="desc">Especialista en DevOps, arquitecturas cloud e IA aplicada al desarrollo web.</p>
+      </div>
 
-      <p class="hero-text">
-        Explora proyectos innovadores, conecta con desarrolladores expertos y obtén asesorías personalizadas
-        para llevar tus habilidades al siguiente nivel.
+    </div>
+  </section>
+
+  <!-- PROYECTOS DESTACADOS -->
+  <section class="section fade">
+    <h2 class="section-title">Proyectos Destacados</h2>
+    <p class="section-sub">Explora los proyectos más innovadores desarrollados por nuestro equipo.</p>
+
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <h3>E-Commerce Platform</h3>
+        <p class="author">Por María González</p>
+        <p class="desc">Plataforma completa con Stripe, panel admin y dashboards.</p>
+        <div class="tags"><span>Next.js</span><span>TypeScript</span><span>Stripe</span></div>
+        <div class="project-buttons">
+          <button class="btn-light-border">Código</button>
+          <button class="btn-dark">Demo</button>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>Task Management System</h3>
+        <p class="author">Por Carlos Rodríguez</p>
+        <p class="desc">Sistema colaborativo con chat interno y productividad.</p>
+        <div class="tags"><span>React</span><span>Node.js</span><span>Socket.io</span></div>
+        <div class="project-buttons">
+          <button class="btn-light-border">Código</button>
+          <button class="btn-dark">Demo</button>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>AI Content Generator</h3>
+        <p class="author">Por María González</p>
+        <p class="desc">Generador de contenido con Inteligencia Artificial.</p>
+        <div class="tags"><span>Python</span><span>OpenAI</span><span>FastAPI</span></div>
+        <div class="project-buttons">
+          <button class="btn-light-border">Código</button>
+          <button class="btn-dark">Demo</button>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CTA -->
+  <section class="cta improved fade">
+
+  <h2>¿Quieres Trabajar Con Nosotros?</h2>
+  <p class="cta-sub">
+    Únete a nuestra comunidad de desarrolladores y lleva tus proyectos al siguiente nivel.
+  </p>
+
+  <div class="cta-features">
+    <div class="feature">
+      <i class="fa-solid fa-user-check"></i>
+      <span>Asesorías Personalizadas</span>
+    </div>
+
+    <div class="feature">
+      <i class="fa-solid fa-users"></i>
+      <span>Comunidad Activa</span>
+    </div>
+
+    <div class="feature">
+      <i class="fa-solid fa-briefcase"></i>
+      <span>Proyectos Reales</span>
+    </div>
+
+    <div class="feature">
+      <i class="fa-solid fa-bolt"></i>
+      <span>Respuesta Rápida</span>
+    </div>
+  </div>
+
+  <div class="cta-buttons improved-btns">
+    <button class="btn-dark big">Registrarse como Programador</button>
+    <button class="btn-light-border big">Solicitar Asesoría</button>
+  </div>
+
+</section>
+
+
+  <!-- FOOTER -->
+ <footer class="footer improved-footer fade">
+
+  <div class="footer-container">
+
+    <div class="footer-col">
+      <h3 class="footer-logo">DevHub</h3>
+      <p class="footer-text">
+        Plataforma profesional para conectar desarrolladores y compartir proyectos.
       </p>
+    </div>
 
-      <div class="hero-buttons">
-        <button class="btn-dark" (click)="verProyecto('destacados')">
-          <i class="fa-solid fa-code"></i> Ver Proyectos
-        </button>
+    <div class="footer-col">
+      <h4>Enlaces Rápidos</h4>
+      <ul>
+        <li><a>Inicio</a></li>
+        <li><a>Proyectos</a></li>
+        <li><a>Equipo</a></li>
+        <li><a>Contacto</a></li>
+      </ul>
+    </div>
 
-        <button class="btn-light-border" (click)="solicitarAsesoria()">
-          <i class="fa-solid fa-user-check"></i> Solicitar Asesoría
-        </button>
-      </div>
+    <div class="footer-col">
+      <h4>Recursos</h4>
+      <ul>
+        <li><a>Iniciar Sesión</a></li>
+        <li><a>Registrarse</a></li>
+        <li><a>Documentación</a></li>
+        <li><a>Ayuda</a></li>
+      </ul>
+    </div>
 
-      <!-- ESTADÍSTICAS -->
-      <div class="stats">
-        <div class="stat-card">
-          <h2>50+</h2>
-          <p>Proyectos Activos</p>
-        </div>
+  </div>
 
-        <div class="stat-card">
-          <h2>20+</h2>
-          <p>Desarrolladores</p>
-        </div>
+  <div class="footer-bottom">
+    © 2025 <strong>DevHub</strong>. Todos los derechos reservados.
+  </div>
 
-        <div class="stat-card">
-          <h2>200+</h2>
-          <p>Asesorías Realizadas</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ====================== -->
-    <!-- EQUIPO (SIN *ngFor) -->
-    <!-- ====================== -->
-    <section class="section">
-      <h2 class="section-title">Nuestro Equipo</h2>
-      <p class="section-sub">Conoce a los líderes que impulsan nuestra plataforma.</p>
-
-      <div class="team-grid">
-
-        <!-- MARÍA -->
-        <div class="team-card">
-          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="foto">
-          <h3>Jordy Romero</h3>
-          <p class="role">Lead Developer & Co-founder</p>
-          <p class="desc">
-            Experta en arquitectura de software con más de 10 años de experiencia. Especializada en sistemas
-            distribuidos y desarrollo full-stack.
-          </p>
-          <div class="social">
-            <i class="fa-brands fa-github"></i>
-            <i class="fa-brands fa-linkedin"></i>
-            <i class="fa-solid fa-envelope"></i>
-          </div>
-        </div>
-
-        <!-- CARLOS -->
-        <div class="team-card">
-          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="foto">
-          <h3>Nayeli Barbecho</h3>
-          <p class="role">Technical Lead & Co-founder</p>
-          <p class="desc">
-            Desarrollador senior apasionado por el código limpio y la arquitectura cloud. Especialista en DevOps.
-          </p>
-          <div class="social">
-            <i class="fa-brands fa-github"></i>
-            <i class="fa-brands fa-linkedin"></i>
-            <i class="fa-solid fa-envelope"></i>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ====================== -->
-    <!-- PROYECTOS DESTACADOS 
-    <!-- ====================== -->
-    <section class="section">
-      <h2 class="section-title">Proyectos Destacados</h2>
-      <p class="section-sub">Explora los proyectos más innovadores desarrollados por nuestro equipo.</p>
-
-      <div class="projects-grid">
-
-        <!-- PROYECTO 1 -->
-        <div class="project-card">
-          <h3>E-Commerce Platform</h3>
-          <p class="author">Por María González</p>
-          <p class="desc">
-            Plataforma de comercio electrónico con Stripe, panel administrativo y análisis en tiempo real.
-          </p>
-
-          <div class="tags">
-            <span>Next.js</span>
-            <span>TypeScript</span>
-            <span>Stripe</span>
-          </div>
-
-          <div class="project-buttons">
-            <button class="btn-light-border" (click)="verProyecto('E-Commerce Platform')">
-              <i class="fa-solid fa-code"></i> Código
-            </button>
-            <button class="btn-dark">Demo</button>
-          </div>
-        </div>
-
-        <!-- PROYECTO 2 -->
-        <div class="project-card">
-          <h3>Task Management System</h3>
-          <p class="author">Por Carlos Rodríguez</p>
-          <p class="desc">
-            Sistema colaborativo con notificaciones, tableros de productividad y chat integrado.
-          </p>
-
-          <div class="tags">
-            <span>React</span>
-            <span>Node.js</span>
-            <span>Socket.io</span>
-          </div>
-
-          <div class="project-buttons">
-            <button class="btn-light-border" (click)="verProyecto('Task Management System')">
-              <i class="fa-solid fa-code"></i> Código
-            </button>
-            <button class="btn-dark">Demo</button>
-          </div>
-        </div>
-
-        <!-- PROYECTO 3 -->
-        <div class="project-card">
-          <h3>AI Content Generator</h3>
-          <p class="author">Por María González</p>
-          <p class="desc">
-            Generador inteligente de contenido utilizando IA con integración OpenAI.
-          </p>
-
-          <div class="tags">
-            <span>Python</span>
-            <span>OpenAI</span>
-            <span>FastAPI</span>
-          </div>
-
-          <div class="project-buttons">
-            <button class="btn-light-border" (click)="verProyecto('AI Content Generator')">
-              <i class="fa-solid fa-code"></i> Código
-            </button>
-            <button class="btn-dark">Demo</button>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- CTA FINAL -->
-    <section class="cta">
-      <h2>¿Quieres Trabajar Con Nosotros?</h2>
-      <p>Únete a nuestra comunidad y lleva tus proyectos al siguiente nivel.</p>
-
-      <div class="cta-icons">
-        <div><i class="fa-solid fa-user-check"></i><p>Asesorías Personalizadas</p></div>
-        <div><i class="fa-solid fa-users"></i><p>Comunidad Activa</p></div>
-        <div><i class="fa-solid fa-briefcase"></i><p>Proyectos Reales</p></div>
-        <div><i class="fa-solid fa-bolt"></i><p>Respuesta Rápida</p></div>
-      </div>
-
-      <div class="cta-buttons">
-        <button class="btn-dark" (click)="registrarProgramador()">Registrarse Como Programador</button>
-        <button class="btn-light-border" (click)="solicitarAsesoria()">Solicitar Asesoría</button>
-      </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-      <div class="footer-grid">
-
-        <div>
-          <h3>DevHub</h3>
-          <p>Plataforma profesional para conectar desarrolladores y compartir proyectos.</p>
-        </div>
-
-        <div>
-          <h4>Enlaces Rápidos</h4>
-          <ul>
-            <li>Inicio</li>
-            <li>Proyectos</li>
-            <li>Equipo</li>
-            <li>Contacto</li>
-          </ul>
-        </div>
-
-        <div>
-          <h4>Recursos</h4>
-          <ul>
-            <li>Iniciar Sesión</li>
-            <li>Registrarse</li>
-            <li>Documentación</li>
-            <li>Ayuda</li>
-          </ul>
-        </div>
-
-      </div>
-
-      <p class="copy">© 2025 DevHub. Todos los derechos reservados.</p>
-    </footer>
-
-  </main>
-
-</div>
+</footer>
