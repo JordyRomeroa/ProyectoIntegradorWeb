@@ -1,0 +1,31 @@
+<div class="modal" [class.show]="isOpen">
+  <div class="modal-content">
+    <h2>{{ project?.id ? 'Editar Proyecto' : 'Crear Proyecto' }}</h2>
+    <form (ngSubmit)="onSave()">
+      <div class="form-group">
+        <label for="title">Título:</label>
+        <input type="text" id="title" [(ngModel)]="editableProject.title" name="title" required>
+      </div>
+      <div class="form-group">
+        <label for="description">Descripción:</label>
+        <textarea id="description" [(ngModel)]="editableProject.description" name="description" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="imageUrl">URL de la Imagen:</label>
+        <input type="url" id="imageUrl" [(ngModel)]="editableProject.imageUrl" name="imageUrl">
+      </div>
+      <div class="form-group">
+        <label for="status">Estado:</label>
+        <select id="status" [(ngModel)]="editableProject.status" name="status" required>
+          <option value="En desarrollo">En desarrollo</option>
+          <option value="Completado">Completado</option>
+          <option value="Pausado">Pausado</option>
+        </select>
+      </div>
+      <div class="modal-actions">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <button type="button" class="btn btn-secondary" (click)="onClose()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>

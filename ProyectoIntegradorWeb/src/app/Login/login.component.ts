@@ -35,8 +35,7 @@ export class LoginComponent {
     try {
       const credential = await signInWithEmailAndPassword(this.auth, this.email, this.password);
       console.log("Email/Password Sign-in successful:", credential.user);
-      // Implement role-based redirection here
-      this.router.navigate(["/dashboard"]); // Placeholder, will be replaced with role-based routing
+      await this._redirectToDashboard(credential.user.uid);
     } catch (error: any) {
       this.errorMsg = this.getFirebaseErrorMessage(error.code);
       if (error.code === 'auth/invalid-email' || error.code === 'auth/user-not-found') {
@@ -58,8 +57,7 @@ export class LoginComponent {
     try {
       const credential = await createUserWithEmailAndPassword(this.auth, this.email, this.password);
       console.log("Registration successful:", credential.user);
-      // Optionally, set initial role or navigate to a profile setup page
-      this.router.navigate(["/dashboard"]); // Placeholder
+      await this._redirectToDashboard(credential.user.uid);
     } catch (error: any) {
       this.errorMsg = this.getFirebaseErrorMessage(error.code);
       console.error("Registration failed:", error);
@@ -71,8 +69,7 @@ export class LoginComponent {
       const user = await this.authService.googleSignIn();
       if (user) {
         console.log("Google login successful, user:", user);
-        // Implement role-based redirection here
-        this.router.navigate(["/dashboard"]); // Placeholder
+        await this._redirectToDashboard(user.uid);
       }
     } catch (error) {
       this.errorMsg = 'Error al iniciar sesión con Google.';
@@ -105,6 +102,22 @@ export class LoginComponent {
   showLoginForm() {
     this.showLogin = true;
     this.errorMsg = '';
+  }
+
+  private async _redirectToDashboard(uid: string) {
+    const role = await this.authService.getUserRole(uid);
+    switch (role) {
+      case 'admin':
+        this.router.navigate(['/admin']);
+        break;
+      case 'programmer':
+        this.router.navigate(['/programmer']);
+        break;
+      case 'user':
+      default:
+        this.router.navigate(['/user']);
+        break;
+    }
   }
 
   private getFirebaseErrorMessage(errorCode: string): string {

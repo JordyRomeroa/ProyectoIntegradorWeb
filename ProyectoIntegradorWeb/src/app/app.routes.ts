@@ -19,6 +19,7 @@ export const routes: Routes = [
   { path: 'programmer', component: ProgrammerPortfolioComponent, canActivate: [roleGuard], data: { role: 'programmer' } },
   { path: 'user', component: UserDashboardComponent, canActivate: [roleGuard], data: { role: 'user' } },
   { path: 'unauthorized', component: UnauthorizedComponent },
+    { path: 'login', component: LoginComponent }, // Added login route
   { path: '', redirectTo: '/informative', pathMatch: 'full' },
    // Wildcard route for any unmatched URLs
   {path: 'Contacto', component: ContactoComponent},

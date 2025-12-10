@@ -1,1 +1,38 @@
-<p>programmer-portfolio works!</p>
+<div class="programmer-dashboard">
+  <div class="header">
+    <h1>Portafolio del Programador</h1>
+    <button class="btn btn-primary" (click)="openCreateProjectModal()">Crear Nuevo Proyecto</button>
+  </div>
+
+  <div *ngIf="(projects$ | async) as projects; else loadingOrNoProjects">
+    <div *ngIf="projects.length > 0; else noProjects">
+      <div class="projects-grid">
+        <div class="project-card" *ngFor="let project of projects">
+          <img [src]="project.imageUrl" alt="{{ project.title }}" class="project-image">
+          <div class="project-info">
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.description }}</p>
+            <span class="project-status status-{{ project.status | lowercase | replaceSpace }}">{{ project.status }}</span>
+            <div class="project-actions">
+              <button class="btn btn-secondary" (click)="openEditProjectModal(project)">Editar</button>
+              <button class="btn btn-danger" (click)="handleDeleteProject(project.id!)">Eliminar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #noProjects>
+      <p class="info-message">No tienes proyectos creados. ¡Empieza creando uno!</p>
+    </ng-template>
+  </div>
+  <ng-template #loadingOrNoProjects>
+    <p class="info-message">Cargando proyectos o no hay proyectos disponibles...</p>
+  </ng-template>
+</div>
+
+<app-project-modal
+  [isOpen]="isModalOpen"
+  [project]="selectedProject"
+  (close)="closeModal()"
+  (save)="handleSaveProject($event)">
+</app-project-modal>
