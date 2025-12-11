@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 import { FormsModule } from '@angular/forms'; // Importar FormsModule
 import { Subscription } from 'rxjs';
+import { AdminSidebarComponent } from './sidebar/admin.sidebar.component';
 
 interface User {
   uid: string;
@@ -14,7 +15,7 @@ interface User {
 @Component({
   selector: 'app-admin-dashboard',
   standalone: true,
-  imports: [CommonModule, FormsModule], // Agregar FormsModule a imports
+  imports: [CommonModule, FormsModule, AdminSidebarComponent], // Agregar FormsModule a imports
   templateUrl: './admin-dashboard.component.html',
   styleUrls: ['./admin-dashboard.component.css']
 })
@@ -66,7 +67,7 @@ export class AdminDashboardComponent implements OnInit, OnDestroy {
         await this.authService.registerWithEmailAndPassword(this.newUser.email, this.newUser.password, 'user');
         alert('Usuario creado exitosamente');
         // loadUsers() se llama automáticamente al final de la suscripción, pero un refresh manual podría ser útil
-        // this.loadUsers(); 
+        // this.loadUsers();
         this.closeCreateModal();
       } catch (error) {
         console.error('Error al crear usuario:', error);

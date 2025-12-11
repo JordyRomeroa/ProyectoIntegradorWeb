@@ -1,0 +1,34 @@
+<div class="sidebar">
+
+  <div class="profile">
+    <img src="assets/admin-icon.png" class="avatar">
+    <h3>Administrador</h3>
+    <span class="role">Control total</span>
+  </div>
+
+  <ul class="menu">
+    <li (click)="nav('dashboard')">
+      <i class="fa-solid fa-gauge-high"></i> Dashboard
+    </li>
+
+
+    <li (click)="go('/admin/asesorias')">
+    <i class="fa-solid fa-clipboard-check"></i>
+    Asesorías (Admin)
+</li>
+
+
+    <li (click)="nav('portafolio')">
+      <i class="fa-solid fa-folder-open"></i> Mi Portafolio
+    </li>
+
+    <li (click)="nav('perfil')">
+      <i class="fa-solid fa-id-card"></i> Mi Perfil
+    </li>
+
+    <li class="logout" (click)="logout()">
+      <i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión
+    </li>
+  </ul>
+
+</div>

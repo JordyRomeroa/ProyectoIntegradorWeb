@@ -1,0 +1,80 @@
+.title {
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 22px;
+  color: #1a1a1a;
+  text-align: center;
+}
+
+.asesorias-table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+}
+
+thead {
+  background: #0f172a;
+  color: white;
+}
+
+th, td {
+  padding: 14px;
+  font-size: 0.95rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+tbody tr:nth-child(even) {
+  background: #f8fafc;
+}
+
+tbody tr:hover {
+  background: #eef2ff;
+}
+
+.mensaje {
+  max-width: 300px;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-aceptar {
+  background: #16a34a;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-aceptar:hover {
+  background: #15803d;
+}
+
+.btn-rechazar {
+  background: #dc2626;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-rechazar:hover {
+  background: #b91c1c;
+}

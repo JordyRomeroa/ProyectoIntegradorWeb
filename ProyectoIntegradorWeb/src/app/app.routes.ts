@@ -11,6 +11,8 @@ import { EquipoComponent } from './InformativePage/equipo/equipo.component';
 import { ProyectosComponent } from './InformativePage/proyectos/proyectos.component';
 import { InformativeComponent } from './InformativePage/informative.component';
 import { AsesoriaComponent } from './InformativePage/asesorias/asesoria.component';
+import { AdminSidebarComponent } from './dashboard/admin-dashboard/sidebar/admin.sidebar.component';
+import { AsesoriaAdminComponent } from './dashboard/admin-dashboard/asesoria.admin/asesoria.admin';
 
 export const routes: Routes = [
   { path: 'informative', component: InformativeComponent },
@@ -28,5 +30,21 @@ export const routes: Routes = [
   //no se por que no redirecciona a proyectos//
   {path: 'proyectos', component: ProyectosComponent},
   { path: 'asesoria', component: AsesoriaComponent },
-  { path: '**', redirectTo: '/informative' }
+  { path: '**', redirectTo: '/informative' },
+
+
+
+
+  {
+    path: 'admin',
+    component: AdminSidebarComponent,   // Sidebar SIEMPRE visible en admin
+    children: [
+      { path: 'dashboard', component: AdminDashboardComponent },
+      // { path: 'perfil', component: AdminPerfilComponent },
+      // { path: 'portafolio', component: AdminPortafolioComponent },
+      { path: 'AsesoriaAdmin', component: AsesoriaAdminComponent },   // 👈 ESTA ES LA QUE NECESITAS
+      { path: 'admin', redirectTo: 'dashboard', pathMatch: 'full' }
+    ]
+  }
+
 ];
