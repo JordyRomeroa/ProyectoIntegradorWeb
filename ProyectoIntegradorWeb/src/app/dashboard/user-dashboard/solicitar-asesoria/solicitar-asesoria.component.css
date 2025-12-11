@@ -1,0 +1,213 @@
+/* ========================================================= */
+/* ✉️ ESTILO FORMULARIO ASESORÍA — ADAPTADO AL TEMA PRINCIPAL */
+/* ========================================================= */
+
+:host {
+  /* Mantenemos el centrado ya que es un formulario pequeño */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 60px); 
+  /* 🔑 CAMBIO CLAVE: Fondo claro (igual que el login) */
+  background-image: radial-gradient(#e5e5e5 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-color: white; 
+  color: #222; 
+  font-family: Arial, sans-serif;
+  padding: 40px; /* Padding consistente */
+  position: relative;
+  overflow: hidden;
+}
+
+.asesoria-container {
+  width: 100%;
+  max-width: 600px;
+  /* Centrado por flex, margin: auto no es estrictamente necesario, pero ayuda en ciertos contextos */
+  margin: auto; 
+}
+
+/* Mensajes de Estado */
+.loading-spinner, .error-message, .success-message {
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 1.5rem;
+  border-radius: 10px; /* Radio consistente */
+  margin-bottom: 1.5rem;
+  background-color: #f8f8f8; /* Fondo claro para mensajes */
+}
+
+.loading-spinner {
+  color: #007bff; /* Azul primario */
+  border: 1px solid #007bff;
+}
+
+.error-message {
+  color: #e60023; /* Rojo consistente */
+  border: 1px solid #e60023;
+  background-color: #fff0f3; /* Fondo suave para error */
+}
+
+.success-message {
+  color: #007bff; /* Azul primario */
+  border: 1px solid #007bff;
+  background-color: #f0f8ff; /* Fondo suave para éxito */
+}
+
+/* Tarjeta del Formulario */
+.asesoria-form-card {
+  background: white;
+  border-radius: 24px; /* Radio consistente con la tarjeta principal */
+  padding: 36px 40px; /* Padding consistente con la tarjeta de login */
+  /* Sombra consistente con el login/dashboard */
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+  border: none;
+  position: relative;
+}
+
+/* Botón "Volver" */
+.back-button {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  background-color: #e5e5e5; /* Fondo claro */
+  color: #222;
+  border: none;
+  padding: 10px 14px; /* Padding consistente */
+  border-radius: 10px; /* Radio interno más pequeño */
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.back-button:hover {
+  background-color: #dcdcdc;
+  transform: translateY(-2px);
+}
+
+/* Título */
+h2 {
+  text-align: center;
+  color: #222; /* Título principal en negro */
+  margin-bottom: 2rem;
+  font-size: 1.9rem; /* Tamaño consistente con el login */
+  font-weight: 800;
+  letter-spacing: normal;
+  padding-top: 1rem;
+}
+
+.programmer-name {
+  color: #444; /* Gris oscuro para el nombre */
+  font-weight: 600;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  text-align: left; /* Alineación a la izquierda para inputs/labels */
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.6rem;
+  color: #444; /* Etiqueta en gris oscuro */
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* Campo de Texto (Textarea) */
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem; /* Padding consistente con inputs de login */
+  border: 1.5px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+  color: #222;
+  font-size: 1rem;
+  resize: vertical;
+  min-height: 120px;
+  outline: none;
+  transition: 0.25s ease;
+}
+
+.form-group textarea::placeholder {
+  color: #888;
+}
+
+.form-group textarea:focus {
+  border-color: #222;
+  background: #f8f8f8;
+  box-shadow: none; /* Quitamos la sombra compleja por el estilo más limpio */
+}
+
+.validation-error {
+  color: #e60023;
+  font-size: 0.94rem;
+  margin-top: 3px;
+}
+
+/* Botón de Enviar (Submit) */
+.submit-button {
+  width: 100%;
+  background: black; /* Botón principal consistente (Negro) */
+  color: white;
+  border: none;
+  padding: 14px 0; /* Padding consistente con el login */
+  border-radius: 8px; /* Radio consistente */
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .25s ease;
+  margin-top: 12px;
+}
+
+.submit-button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.submit-button:not(:disabled):hover {
+  transform: translateY(-3px) scale(1.01); 
+  box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  :host {
+    padding: 20px; /* Reducimos el padding general */
+  }
+
+  .asesoria-form-card {
+    padding: 28px 24px;
+  }
+
+  .back-button {
+    top: 1rem;
+    left: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+    padding-top: 1.5rem;
+  }
+
+  .form-group label {
+    font-size: 0.9rem;
+  }
+
+  .form-group textarea {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+    min-height: 100px;
+  }
+
+  .submit-button {
+    padding: 12px 0;
+    font-size: 1rem;
+  }
+}

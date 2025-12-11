@@ -1,0 +1,35 @@
+<div class="portfolio-detail-container">
+  <div *ngIf="loading" class="loading-spinner">Cargando portafolio...</div>
+
+  <div *ngIf="error" class="error-message">{{ error }}</div>
+
+  <div *ngIf="programmer && !loading" class="programmer-profile">
+    <button (click)="router.navigate([ '/explorar' ])" class="back-button">← Volver a Explorar</button>
+
+    <div class="profile-header">
+      <img [src]="programmer.photoURL || 'assets/default-avatar.png'" alt="Foto de {{programmer.name}}" class="profile-avatar" />
+      <h1>{{ programmer.name }} {{ programmer.lastname }}</h1>
+      <p class="profile-description">{{ programmer.description }}</p>
+      <div class="profile-skills">
+        <span *ngFor="let skill of programmer.skills" class="skill-tag">{{ skill }}</span>
+      </div>
+      <button (click)="contactProgrammer(programmer.uid)" class="contact-button">Contactar Programador</button>
+    </div>
+
+    <hr />
+
+    <h2>Proyectos de {{ programmer.name }}</h2>
+    <div *ngIf="projects.length === 0" class="no-projects">
+      Este programador aún no ha añadido proyectos.
+    </div>
+
+    <div class="projects-grid">
+      <div *ngFor="let project of projects" class="project-card">
+        <img [src]="project.imageUrl || 'assets/default-project.png'" alt="Imagen del proyecto {{project.title}}" class="project-image" />
+        <h3>{{ project.title }}</h3>
+        <p class="project-description">{{ project.description | slice:0:150 }}...</p>
+        <span class="project-status">Estado: {{ project.status }}</span>
+      </div>
+    </div>
+  </div>
+</div>

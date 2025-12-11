@@ -1,0 +1,40 @@
+<div class="admin-programmers-container">
+  <h2>Gestión de Programadores</h2>
+
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+  <button (click)="addProgrammer()" class="add-button">Agregar Nuevo Programador</button>
+
+  <div class="programmers-table-container">
+    <table class="programmers-table">
+      <thead>
+        <tr>
+          <th>Foto</th>
+          <th>Nombre</th>
+          <th>Email</th>
+          <th>Especialidad</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngIf="programmers$ | async as programmers">
+          <tr *ngIf="programmers.length === 0">
+            <td colspan="5" class="no-programmers">No hay programadores registrados.</td>
+          </tr>
+          <tr *ngFor="let programmer of programmers">
+            <td>
+              <img [src]="programmer.photoURL || 'assets/default-avatar.png'" alt="Foto de {{programmer.name}}" class="programmer-avatar-sm" />
+            </td>
+            <td>{{ programmer.name }} {{ programmer.lastname }}</td>
+            <td>{{ programmer.email }}</td>
+            <td>{{ programmer.specialty }}</td>
+            <td class="actions">
+              <button (click)="editProgrammer(programmer.uid)" class="edit-button">Editar</button>
+              <button (click)="deleteProgrammer(programmer.uid)" class="delete-button">Eliminar</button>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+</div>

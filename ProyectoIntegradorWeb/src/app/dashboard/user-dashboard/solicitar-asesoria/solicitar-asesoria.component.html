@@ -1,0 +1,33 @@
+<div class="asesoria-container">
+  <div *ngIf="isLoading" class="loading-spinner">Cargando formulario...</div>
+
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+  <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+
+  <div *ngIf="!isLoading && !errorMessage" class="asesoria-form-card">
+    <button (click)="onBack()" class="back-button">← Volver</button>
+
+    <h2>Solicitar Asesoría a <span class="programmer-name">{{ programmerName }}</span></h2>
+
+    <form [formGroup]="asesoriaForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="mensaje">Mensaje:</label>
+        <textarea
+          id="mensaje"
+          formControlName="mensaje"
+          rows="6"
+          placeholder="Describe en detalle tu solicitud de asesoría (mínimo 20 caracteres)."
+        ></textarea>
+        <div *ngIf="mensaje && mensaje.invalid && (mensaje.dirty || mensaje.touched)" class="validation-error">
+          <div *ngIf="mensaje.errors?.['required']">El mensaje es requerido.</div>
+          <div *ngIf="mensaje.errors?.['minlength']">El mensaje debe tener al menos 20 caracteres.</div>
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="asesoriaForm.invalid || isLoading" class="submit-button">
+        {{ isLoading ? 'Enviando...' : 'Enviar Solicitud' }}
+      </button>
+    </form>
+  </div>
+</div>

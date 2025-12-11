@@ -1,0 +1,195 @@
+/* ========================================================= */
+/* 📂 ESTILO LISTA PORTAFOLIOS — ADAPTADO AL TEMA PRINCIPAL  */
+/* ========================================================= */
+
+:host {
+  /* 🔑 CAMBIO CLAVE: Fondo claro (Asumimos el fondo grid del .admin-bg si se usa, 
+     o un fondo blanco simple). */
+  display: block;
+  padding: 0; 
+  min-height: calc(100vh - 60px); 
+  background-color: white; /* Base clara */
+  color: #222; /* Texto principal */
+  font-family: Arial, sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-list-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  /* Espaciado interno consistente */
+  padding: 40px 20px; 
+}
+
+/* Título de la Página */
+h2 {
+  text-align: center;
+  color: #222; /* Título principal en negro fuerte */
+  margin-bottom: 2rem;
+  font-size: 2.2rem;
+  font-weight: 800; /* Peso consistente */
+  letter-spacing: normal;
+}
+
+/* Barra de Búsqueda */
+.search-bar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.search-bar input {
+  width: 100%;
+  max-width: 500px;
+  padding: 0.75rem 1rem; /* Padding consistente con inputs de login */
+  border: 1.5px solid #ddd; /* Borde sutil */
+  border-radius: 10px; /* Radio consistente con inputs de login */
+  background-color: #fff;
+  color: #222;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Sombra muy sutil */
+}
+
+.search-bar input::placeholder {
+  color: #888;
+}
+
+.search-bar input:focus {
+  border-color: #222;
+  background: #f8f8f8;
+  /* Sombra de enfoque sutil */
+  box-shadow: 0 0 0 3px rgba(34, 34, 34, 0.1); 
+}
+
+/* Grid de Tarjetas */
+.programmer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Mínimo ligeramente mayor */
+  gap: 2rem;
+  justify-content: center;
+}
+
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #888;
+  padding: 2rem;
+}
+
+/* Tarjeta de Programador */
+.programmer-card {
+  background-color: white; /* Fondo blanco */
+  border-radius: 14px; /* Radio intermedio */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  /* Sombra consistente con las tarjetas de proyecto */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.10); 
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border: 1px solid #eee; /* Borde muy sutil */
+}
+
+.programmer-card:hover {
+  transform: translateY(-5px); /* Efecto hover consistente */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border-color: #007bff; /* Borde al pasar el ratón en azul */
+}
+
+.programmer-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  /* Borde en color primario */
+  border: 3px solid #007bff; 
+}
+
+.programmer-card h3 {
+  color: #222; /* Nombre en negro */
+  margin-bottom: 0.5rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.programmer-description {
+  color: #666; /* Descripción en gris medio */
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  flex-grow: 1; 
+}
+
+.programmer-skills {
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.skill-tag {
+  background-color: #f0f0f0; /* Fondo muy claro */
+  color: #444; 
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid #ddd; /* Borde sutil */
+}
+
+/* Botón de Portafolio (Acción Principal) */
+.view-portfolio-button {
+  background: black; /* Botón principal consistente (Negro) */
+  color: white;
+  border: none;
+  padding: 12px 18px; /* Padding consistente */
+  border-radius: 10px; /* Radio consistente */
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .25s ease;
+  margin-top: auto; 
+}
+
+.view-portfolio-button:hover {
+  transform: translateY(-3px) scale(1.03); /* Efecto hover consistente */
+  box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .portfolio-list-container {
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  .programmer-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .programmer-card {
+    padding: 1rem;
+  }
+
+  .programmer-avatar {
+    width: 100px;
+    height: 100px;
+  }
+
+  .programmer-card h3 {
+    font-size: 1.4rem;
+  }
+}
