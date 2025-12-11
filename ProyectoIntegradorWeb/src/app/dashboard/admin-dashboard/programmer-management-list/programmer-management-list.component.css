@@ -1,0 +1,168 @@
+:host {
+  display: block;
+  padding: 2rem;
+  background-color: #1a1a1a;
+  min-height: calc(100vh - 60px); /* Ajusta según la altura de tu navbar si existe */
+  color: #e0e0e0;
+  font-family: Arial, sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.admin-programmers-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+h2 {
+  text-align: center;
+  color: #00e676; /* Color vibrante para títulos */
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.error-message {
+  color: #ff3d00;
+  background-color: #2a2a2a;
+  border: 1px solid #ff3d00;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.add-button {
+  background-color: #00e676;
+  color: #1a1a1a;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-bottom: 2rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.add-button:hover {
+  background-color: #00ff80;
+  transform: translateY(-2px);
+}
+
+.programmers-table-container {
+  overflow-x: auto;
+  background-color: #2a2a2a;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  border: 1px solid #3a3a3a;
+}
+
+.programmers-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.programmers-table th,
+.programmers-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #3a3a3a;
+}
+
+.programmers-table th {
+  background-color: #3a3a3a;
+  color: #00e676;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.programmers-table tbody tr:hover {
+  background-color: #333;
+}
+
+.programmer-avatar-sm {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #00e676;
+}
+
+.actions button {
+  margin-right: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.edit-button {
+  background-color: #007bff; /* Azul */
+  color: #ffffff;
+  border: none;
+}
+
+.edit-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.delete-button {
+  background-color: #dc3545; /* Rojo */
+  color: #ffffff;
+  border: none;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+  transform: translateY(-2px);
+}
+
+.no-programmers {
+  text-align: center;
+  font-style: italic;
+  color: #888;
+  padding: 2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  :host {
+    padding: 1rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  .programmers-table th,
+  .programmers-table td {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .programmer-avatar-sm {
+    width: 40px;
+    height: 40px;
+  }
+
+  .actions button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
+    margin-right: 0.3rem;
+  }
+
+  .add-button {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}

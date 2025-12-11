@@ -1,0 +1,28 @@
+<div class="portfolio-list-container">
+  <h2>Explorar Programadores</h2>
+
+  <div class="search-bar">
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      (input)="searchProgrammers()"
+      placeholder="Buscar por nombre o habilidad..."
+    />
+  </div>
+
+  <div class="programmer-grid">
+    <div *ngIf="filteredProgrammers.length === 0" class="no-results">
+      No se encontraron programadores que coincidan con la búsqueda.
+    </div>
+
+    <div *ngFor="let programmer of filteredProgrammers" class="programmer-card">
+      <img [src]="programmer.photoURL || 'assets/default-avatar.png'" alt="Foto de {{programmer.name}}" class="programmer-avatar" />
+      <h3>{{ programmer.name }} {{ programmer.lastname }}</h3>
+      <p class="programmer-description">{{ programmer.description | slice:0:100 }}...</p>
+      <div class="programmer-skills">
+        <span *ngFor="let skill of programmer.skills" class="skill-tag">{{ skill }}</span>
+      </div>
+      <button (click)="viewPortfolio(programmer.uid)" class="view-portfolio-button">Ver Portafolio</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,237 @@
+/* ========================================================= */
+/* 💻 ESTILO DETALLE PORTAFOLIO — ADAPTADO AL TEMA PRINCIPAL */
+/* ========================================================= */
+
+:host {
+  /* 🔑 CAMBIO CLAVE: Base de color CLARA (Fondo tipo grid) */
+  display: block;
+  /* Eliminamos el padding, .admin-bg ya lo manejará si se usa junto */
+  padding: 0; 
+  /* Usaremos la misma tipografía simple y legible */
+  font-family: Arial, sans-serif;
+  position: relative;
+  overflow: hidden;
+  /* Simulamos la altura mínima, aunque en una aplicación real, 
+     probablemente :host esté dentro del admin-bg. */
+  min-height: 100vh; 
+  background: white; /* Color base */
+  color: #222; /* Texto principal */
+}
+
+/* Contenedor principal para centrar el contenido */
+.portfolio-detail-container { 
+  max-width: 1100px; /* Ancho consistente con el dashboard */
+  margin: 0 auto; 
+  padding: 40px; /* Padding exterior */
+}
+
+.loading-spinner, .error-message { 
+  text-align: center; 
+  font-size: 1.2rem; 
+  color: #007bff; /* Color primario unificado (Azul) */
+  padding: 2rem; 
+}
+.error-message { 
+  color: #e60023; /* Color de error unificado (Rojo) */
+}
+
+/* 🔑 Tarjeta principal del Perfil */
+.programmer-profile { 
+  background-color: white; 
+  border-radius: 24px; /* Radio consistente */
+  padding: 34px 40px; /* Padding consistente */
+  /* Sombra consistente con el login/dashboard */
+  box-shadow: 0 8px 28px rgba(0,0,0,0.12); 
+  border: none; /* Quitamos el borde oscuro */
+}
+
+/* Botón "Volver" */
+.back-button { 
+  background-color: #e5e5e5; /* Fondo claro */
+  color: #222; 
+  border: none; 
+  padding: 10px 14px; 
+  border-radius: 10px; /* Radio interno más pequeño */
+  font-size: .95rem; 
+  font-weight: 600;
+  cursor: pointer; 
+  transition: .25s ease; 
+  margin-bottom: 20px; 
+  display: inline-flex; 
+  align-items: center; 
+  gap: .5rem; 
+}
+.back-button:hover { 
+  background-color: #dcdcdc; 
+  transform: translateY(-2px); /* Efecto hover consistente */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.profile-header { 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  text-align: center; 
+  margin-bottom: 2rem; 
+}
+.profile-avatar { 
+  width: 150px; 
+  height: 150px; 
+  border-radius: 50%; 
+  object-fit: cover; 
+  margin-bottom: 1.5rem; 
+  /* Borde más sutil y en color primario */
+  border: 4px solid #007bff; 
+}
+
+/* Título (Nombre) */
+.programmer-profile h1 { 
+  color: #222; /* Color principal */
+  margin-bottom: .8rem; 
+  font-size: 2.5rem; 
+  font-weight: 800; /* Peso consistente */
+}
+
+.profile-description { 
+  color: #444; /* Gris oscuro para el cuerpo de texto */
+  font-size: 1.1rem; 
+  line-height: 1.6; 
+  margin: 0 auto 1.5rem auto; /* Centrar el texto */
+  max-width: 700px; 
+}
+
+/* Tags de Habilidades */
+.profile-skills { 
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: center; 
+  gap: .7rem; 
+  margin-bottom: 2rem; 
+}
+.skill-tag { 
+  background-color: #f0f0f0; /* Fondo muy claro */
+  color: #444; 
+  padding: .5rem 1rem; 
+  border-radius: 20px; 
+  font-size: .9rem; 
+  font-weight: 600; /* Peso consistente */
+  border: 1px solid #ddd; /* Borde sutil */
+}
+
+/* Botón de Contacto (Acción Principal) */
+.contact-button { 
+  background: black; /* Botón principal consistente (Negro) */
+  color: white; 
+  border: none; 
+  padding: 14px 20px; /* Padding consistente */
+  border-radius: 10px; /* Radio consistente */
+  font-size: 1.1rem; 
+  font-weight: 600; 
+  cursor: pointer; 
+  transition: .25s ease; 
+  display: inline-block; /* Para transformaciones */
+}
+.contact-button:hover { 
+  background: #222;
+  transform: translateY(-3px) scale(1.03); /* Efecto hover consistente */
+  box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+}
+
+hr { 
+  border: none; 
+  border-top: 1px solid #ddd; /* Separador más claro */
+  margin: 2.5rem 0; 
+}
+
+/* Título de Sección (Proyectos) */
+.programmer-profile h2 { 
+  text-align: center; 
+  color: #222; /* Título secundario en negro */
+  margin-bottom: 2rem; 
+  font-size: 2rem; 
+  font-weight: 800; 
+}
+
+.no-projects { 
+  text-align: center; 
+  color: #888; 
+  font-size: 1.1rem; 
+  padding: 1rem; 
+}
+
+/* Grid de Proyectos */
+.projects-grid { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Ancho ligeramente mayor para las cards */
+  gap: 2rem; 
+  justify-content: center; 
+}
+
+/* Tarjeta de Proyecto */
+.project-card { 
+  background-color: white; /* Fondo blanco */
+  border-radius: 14px; /* Radio intermedio */
+  overflow: hidden; 
+  box-shadow: 0 4px 12px rgba(0,0,0,0.10); /* Sombra más sutil */
+  transition: .25s ease; 
+  border: 1px solid #eee; /* Borde muy claro */
+  display: flex; 
+  flex-direction: column; 
+}
+.project-card:hover { 
+  transform: translateY(-5px); /* Transformación más suave */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15); 
+  border-color: #007bff; /* Borde al pasar el ratón en azul */
+}
+
+.project-image { 
+  width: 100%; 
+  height: 180px; 
+  object-fit: cover; 
+  border-bottom: 1px solid #eee; /* Borde de imagen sutil */
+}
+
+.project-card h3 { 
+  color: #222; /* Título de proyecto en negro */
+  font-size: 1.5rem; 
+  padding: 1rem 1rem 0.5rem; 
+  margin: 0; 
+  font-weight: 700;
+}
+.project-description { 
+  color: #666; /* Gris medio para la descripción */
+  font-size: .95rem; 
+  padding: 0 1rem; 
+  flex-grow: 1; 
+  line-height: 1.4;
+}
+.project-status { 
+  display: block; 
+  background-color: #f8f8f8; /* Fondo sutil para el estado */
+  color: #444; 
+  font-weight: 600; 
+  padding: .7rem 1rem; 
+  text-align: right; 
+  font-size: .85rem; 
+  border-top: 1px solid #eee; 
+}
+
+/* ========================================================= */
+/* RESPONSIVE                                                */
+/* ========================================================= */
+@media (max-width: 768px) {
+  .portfolio-detail-container { padding: 20px; }
+  .programmer-profile { padding: 1.5rem; }
+  .profile-avatar { width: 100px; height: 100px; }
+  .programmer-profile h1 { font-size: 2.2rem; }
+  .profile-description { font-size: 1rem; }
+  .profile-skills { gap: .5rem; }
+  .contact-button { padding: 12px 18px; font-size: 1rem; }
+  .programmer-profile h2 { font-size: 1.8rem; }
+  .projects-grid { 
+    grid-template-columns: 1fr; 
+    max-width: 400px; 
+    margin: 0 auto; 
+    gap: 1.5rem;
+  }
+}
