@@ -1,0 +1,26 @@
+<div class="sidebar">
+
+  <div class="profile">
+    <img src="assets/programmer-icon.png" class="avatar">
+    <h3>{{ currentUserName }}</h3>
+    <span class="role">Programador</span>
+    <p>{{ currentUserEmail }}</p>
+  </div>
+
+  <ul class="menu">
+    <li (click)="go('/programmer/portfolio')">
+      <i class="fa-solid fa-folder-open"></i> Mi Portafolio
+    </li>
+    <li (click)="go('/programmer/asesorias')">
+      <i class="fa-solid fa-clipboard-check"></i> Mis Asesorías
+    </li>
+    <li (click)="go('/programmer/projects-management')">
+      <i class="fa-solid fa-list-check"></i> Gestión de Proyectos
+    </li>
+    <!-- Más enlaces para el menú del programador -->
+    <li class="logout" (click)="logout()">
+      <i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión
+    </li>
+  </ul>
+
+</div>

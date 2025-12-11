@@ -1,0 +1,88 @@
+/* Estilos para programmer-sidebar.component.css */
+.sidebar {
+  width: 250px;
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.profile {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+  border: 3px solid #555;
+}
+
+h3 {
+  margin: 0;
+  font-size: 1.3em;
+}
+
+.role {
+  display: block;
+  font-size: 0.9em;
+  color: #bbb;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 0.8em;
+  color: #ccc;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.menu li i {
+  margin-right: 10px;
+  font-size: 1.1em;
+}
+
+.menu li:hover {
+  background-color: #555;
+  border-radius: 5px;
+}
+
+.menu li a {
+  display: block;
+  padding: 10px 15px;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+}
+
+.menu li a:hover {
+  background-color: #555;
+}
+
+.logout {
+  margin-top: 30px;
+  border-top: 1px solid #555;
+  padding-top: 20px;
+}
+
+.logout i {
+  color: #f44336; /* Color rojo para el ícono de cerrar sesión */
+}
+
+.logout:hover {
+  background-color: #d32f2f; /* Rojo más oscuro al pasar el ratón */
+  border-radius: 5px;
+}

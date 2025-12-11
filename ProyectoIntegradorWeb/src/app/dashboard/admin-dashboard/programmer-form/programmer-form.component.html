@@ -1,127 +1,55 @@
-<div class="programmer-form-container">
-  <div *ngIf="loading" class="loading-spinner">Cargando formulario...</div>
+<div>
+  <h2 *ngIf="!isEditMode">Registrar Nuevo Programador</h2>
+  <h2 *ngIf="isEditMode">Editar Programador</h2>
 
-  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
-  <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
-
-  <div *ngIf="!loading && !errorMessage" class="form-card">
-    <button (click)="onCancel()" class="back-button">← Volver</button>
-
-    <h2>{{ isEditMode ? 'Editar Programador' : 'Registrar Nuevo Programador' }}</h2>
-
-    <form [formGroup]="programmerForm" (ngSubmit)="onSubmit()">
-
-      <!-- Campos básicos del programador -->
-      <div class="form-group">
-        <label for="name">Nombre:</label>
-        <input id="name" type="text" formControlName="name" placeholder="Nombre del programador">
-        <div *ngIf="programmerForm.get('name')?.invalid && (programmerForm.get('name')?.dirty || programmerForm.get('name')?.touched)" class="validation-error">
-          <div *ngIf="programmerForm.get('name')?.errors?.['required']">El nombre es requerido.</div>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="lastname">Apellido:</label>
-        <input id="lastname" type="text" formControlName="lastname" placeholder="Apellido del programador">
-        <div *ngIf="programmerForm.get('lastname')?.invalid && (programmerForm.get('lastname')?.dirty || programmerForm.get('lastname')?.touched)" class="validation-error">
-          <div *ngIf="programmerForm.get('lastname')?.errors?.['required']">El apellido es requerido.</div>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="specialty">Especialidad:</label>
-        <input id="specialty" type="text" formControlName="specialty" placeholder="Ej: Desarrollo Web, Mobile, Data Science">
-        <div *ngIf="programmerForm.get('specialty')?.invalid && (programmerForm.get('specialty')?.dirty || programmerForm.get('specialty')?.touched)" class="validation-error">
-          <div *ngIf="programmerForm.get('specialty')?.errors?.['required']">La especialidad es requerida.</div>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="description">Breve Descripción:</label>
-        <textarea id="description" formControlName="description" rows="4" placeholder="Una breve descripción del programador."></textarea>
-        <div *ngIf="programmerForm.get('description')?.invalid && (programmerForm.get('description')?.dirty || programmerForm.get('description')?.touched)" class="validation-error">
-          <div *ngIf="programmerForm.get('description')?.errors?.['required']">La descripción es requerida.</div>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="contactEmail">Email de Contacto:</label>
-        <input id="contactEmail" type="email" formControlName="contactEmail" placeholder="Correo electrónico de contacto">
-        <div *ngIf="programmerForm.get('contactEmail')?.invalid && (programmerForm.get('contactEmail')?.dirty || programmerForm.get('contactEmail')?.touched)" class="validation-error">
-          <div *ngIf="programmerForm.get('contactEmail')?.errors?.['required']">El email de contacto es requerido.</div>
-          <div *ngIf="programmerForm.get('contactEmail')?.errors?.['email']">Formato de email inválido.</div>
-        </div>
-      </div>
-
-      <div class="form-group" *ngIf="!isEditMode">
-        <label for="email">Email de Inicio de Sesión:</label>
-        <input id="email" type="email" formControlName="email" placeholder="Email para que el programador inicie sesión">
-        <div *ngIf="programmerForm.get('email')?.invalid && (programmerForm.get('email')?.dirty || programmerForm.get('email')?.touched)" class="validation-error">
-          <div *ngIf="programmerForm.get('email')?.errors?.['required']">El email es requerido.</div>
-          <div *ngIf="programmerForm.get('email')?.errors?.['email']">Formato de email inválido.</div>
-        </div>
-      </div>
-
-      <div class="form-group" *ngIf="!isEditMode">
-        <label for="password">Contraseña:</label>
-        <input id="password" type="password" formControlName="password" placeholder="Contraseña para el programador">
-        <div *ngIf="programmerForm.get('password')?.invalid && (programmerForm.get('password')?.dirty || programmerForm.get('password')?.touched)" class="validation-error">
-          <div *ngIf="programmerForm.get('password')?.errors?.['required']">La contraseña es requerida.</div>
-          <div *ngIf="programmerForm.get('password')?.errors?.['minlength']">Mínimo 6 caracteres.</div>
-        </div>
-      </div>
-
-      <!-- Carga de foto de perfil -->
-      <div class="form-group">
-        <label for="photo">Foto de Perfil:</label>
-        <input type="file" id="photo" (change)="onFileSelected($event)" accept="image/*">
-        <div *ngIf="imageUrl" class="image-preview">
-          <img [src]="imageUrl" alt="Previsualización de la foto de perfil">
-          <p>Imagen actual</p>
-        </div>
-      </div>
-
-      <!-- Habilidades (Skills) -->
-      <div class="form-group">
-        <label>Habilidades (Skills):</label>
-        <div formArrayName="skills">
-          <div *ngFor="let skillControl of skills.controls; let i = index" class="skill-input-group">
-            <input type="text" [formControlName]="i" placeholder="Añadir habilidad">
-            <button type="button" (click)="removeSkill(i)" class="remove-button">-</button>
-            <div *ngIf="skillControl.invalid && (skillControl.dirty || skillControl.touched)" class="validation-error">
-              <div *ngIf="skillControl.errors?.['required']">La habilidad es requerida.</div>
-            </div>
-          </div>
-          <button type="button" (click)="addSkill()" class="add-button-small">+ Añadir Habilidad</button>
-        </div>
-      </div>
-
-      <!-- Redes Sociales (Social Links) -->
-      <div class="form-group">
-        <label>Redes Sociales:</label>
-        <div formArrayName="socialLinks">
-          <div *ngFor="let socialLinkGroup of socialLinks.controls; let i = index" [formGroupName]="i" class="social-link-group">
-            <input type="text" formControlName="platform" placeholder="Plataforma (ej: LinkedIn, GitHub)">
-            <input type="text" formControlName="url" placeholder="URL de la red social">
-            <button type="button" (click)="removeSocialLink(i)" class="remove-button">-</button>
-            <div *ngIf="socialLinkGroup.get('platform')?.invalid && (socialLinkGroup.get('platform')?.dirty || socialLinkGroup.get('platform')?.touched)" class="validation-error">
-              <div *ngIf="socialLinkGroup.get('platform')?.errors?.['required']">La plataforma es requerida.</div>
-            </div>
-            <div *ngIf="socialLinkGroup.get('url')?.invalid && (socialLinkGroup.get('url')?.dirty || socialLinkGroup.get('url')?.touched)" class="validation-error">
-              <div *ngIf="socialLinkGroup.get('url')?.errors?.['required']">La URL es requerida.</div>
-              <div *ngIf="socialLinkGroup.get('url')?.errors?.['pattern']">Formato de URL inválido.</div>
-            </div>
-          </div>
-          <button type="button" (click)="addSocialLink()" class="add-button-small">+ Añadir Red Social</button>
-        </div>
-      </div>
-
-      <div class="form-actions">
-        <button type="button" (click)="onCancel()" class="cancel-button">Cancelar</button>
-        <button type="submit" [disabled]="programmerForm.invalid || loading" class="submit-button">
-          {{ loading ? 'Guardando...' : (isEditMode ? 'Actualizar Programador' : 'Registrar Programador') }}
-        </button>
-      </div>
-    </form>
-  </div>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" [(ngModel)]="formData.email" name="email" required [disabled]="isEditMode">
+    </div>
+    <div class="form-group" *ngIf="!isEditMode">
+      <label for="password">Contraseña:</label>
+      <input type="password" id="password" [(ngModel)]="formData.password" name="password" required>
+    </div>
+    <div class="form-group">
+      <label for="role">Rol:</label>
+      <select id="role" [(ngModel)]="formData.role" name="role" required>
+        <option value="programmer">Programador</option>
+        <option value="user">Usuario</option>
+        <option value="admin">Administrador</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="name">Nombre:</label>
+      <input type="text" id="name" [(ngModel)]="formData.name" name="name" required>
+    </div>
+    <div class="form-group">
+      <label for="lastname">Apellido:</label>
+      <input type="text" id="lastname" [(ngModel)]="formData.lastname" name="lastname" required>
+    </div>
+    <div class="form-group">
+      <label for="specialty">Especialidad:</label>
+      <input type="text" id="specialty" [(ngModel)]="formData.specialty" name="specialty">
+    </div>
+    <div class="form-group">
+      <label for="description">Descripción:</label>
+      <textarea id="description" [(ngModel)]="formData.description" name="description"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="photoURL">URL de Foto de Perfil:</label>
+      <input type="text" id="photoURL" [(ngModel)]="formData.photoURL" name="photoURL">
+    </div>
+    <div class="form-group">
+      <label for="contactLinks">Enlaces de Contacto (separados por coma):</label>
+      <input type="text" id="contactLinks" [(ngModel)]="formData.contactLinks" name="contactLinks">
+    </div>
+    <div class="form-group">
+      <label for="socialNetworks">Redes Sociales (separadas por coma):</label>
+      <input type="text" id="socialNetworks" [(ngModel)]="formData.socialNetworks" name="socialNetworks">
+    </div>
+    <div class="modal-actions">
+      <button type="submit" class="action-button primary">Guardar</button>
+      <button type="button" class="action-button secondary" (click)="onCancel()">Cancelar</button>
+    </div>
+  </form>
 </div>

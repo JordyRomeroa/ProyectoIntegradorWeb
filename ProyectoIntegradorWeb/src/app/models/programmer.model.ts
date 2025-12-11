@@ -6,8 +6,8 @@ export interface Programmer {
   specialty: string; // Nueva propiedad para la especialidad del programador
   description: string;
   photoURL: string;
-  role: 'programador';
+  role: 'programador' | 'programmer'; // Acepta 'programador' o 'programmer'
   skills: string[];
-  contactEmail: string; // Puede ser el mismo que email, o un contacto específico
-  socialLinks: { platform: string, url: string }[]; // Lista de enlaces a redes sociales
+  contactLinks: string; // Cambiado a string para la lista de enlaces de contacto separados por coma
+  socialNetworks: string; // Cambiado a string para la lista de redes sociales separadas por coma
 }

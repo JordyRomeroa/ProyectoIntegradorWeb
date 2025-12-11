@@ -1,40 +1,85 @@
-<div class="admin-programmers-container">
-  <h2>Gestión de Programadores</h2>
+<h2>Gestión de Programadores</h2>
 
-  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+<button class="create-button" (click)="openCreateModal()">Registrar Nuevo Programador</button>
 
-  <button (click)="addProgrammer()" class="add-button">Agregar Nuevo Programador</button>
+<div class="programmers-table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>UID</th>
+        <th>Email</th>
+        <th>Rol</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.uid }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.role }}</td>
+        <td>
+          <button class="edit-button" (click)="openEditModal(user)">Editar</button>
+          <button class="delete-button" (click)="openDeleteModal(user)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-  <div class="programmers-table-container">
-    <table class="programmers-table">
-      <thead>
-        <tr>
-          <th>Foto</th>
-          <th>Nombre</th>
-          <th>Email</th>
-          <th>Especialidad</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <ng-container *ngIf="programmers$ | async as programmers">
-          <tr *ngIf="programmers.length === 0">
-            <td colspan="5" class="no-programmers">No hay programadores registrados.</td>
-          </tr>
-          <tr *ngFor="let programmer of programmers">
-            <td>
-              <img [src]="programmer.photoURL || 'assets/default-avatar.png'" alt="Foto de {{programmer.name}}" class="programmer-avatar-sm" />
-            </td>
-            <td>{{ programmer.name }} {{ programmer.lastname }}</td>
-            <td>{{ programmer.email }}</td>
-            <td>{{ programmer.specialty }}</td>
-            <td class="actions">
-              <button (click)="editProgrammer(programmer.uid)" class="edit-button">Editar</button>
-              <button (click)="deleteProgrammer(programmer.uid)" class="delete-button">Eliminar</button>
-            </td>
-          </tr>
-        </ng-container>
-      </tbody>
-    </table>
+<!-- Modal de Creación de Usuario (se moverá al form component) -->
+<div class="modal" *ngIf="showCreateModal">
+  <div class="modal-content">
+    <h3>Crear Nuevo Programador</h3>
+    <form (ngSubmit)="createUser()">
+      <div class="form-group">
+        <label for="newEmail">Email:</label>
+        <input type="email" id="newEmail" [(ngModel)]="newUser.email" name="newEmail" required>
+      </div>
+      <div class="form-group">
+        <label for="newPassword">Contraseña:</label>
+        <input type="password" id="newPassword" [(ngModel)]="newUser.password" name="newPassword" required>
+      </div>
+      <div class="modal-actions">
+        <button type="submit" class="action-button primary">Crear</button>
+        <button type="button" class="action-button secondary" (click)="closeCreateModal()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Modal de Edición de Usuario (se moverá al form component) -->
+<div class="modal" *ngIf="showEditModal">
+  <div class="modal-content">
+    <h3>Editar Programador</h3>
+    <form (ngSubmit)="editUser()">
+      <div class="form-group">
+        <label for="editEmail">Email:</label>
+        <input type="email" id="editEmail" [(ngModel)]="editUserData.email" name="editEmail" disabled>
+      </div>
+      <div class="form-group">
+        <label for="editRole">Rol:</label>
+        <select id="editRole" [(ngModel)]="editUserData.role" name="editRole" required>
+          <option value="programmer">Programador</option>
+          <option value="user">Usuario</option>
+          <option value="admin">Administrador</option>
+        </select>
+      </div>
+      <div class="modal-actions">
+        <button type="submit" class="action-button primary">Guardar Cambios</button>
+        <button type="button" class="action-button secondary" (click)="closeEditModal()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Modal de Eliminación de Usuario -->
+<div class="modal" *ngIf="showDeleteModal">
+  <div class="modal-content">
+    <h3>Eliminar Programador</h3>
+    <p>¿Estás seguro de que quieres eliminar al programador con email: <strong>{{ selectedUser?.email }}</strong>?</p>
+    <div class="modal-actions">
+      <button type="button" class="action-button delete" (click)="deleteUser()">Eliminar</button>
+      <button type="button" class="action-button secondary" (click)="closeDeleteModal()">Cancelar</button>
+    </div>
   </div>
 </div>

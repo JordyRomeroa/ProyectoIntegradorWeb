@@ -1,20 +1,33 @@
+/* ========================================================= */
+/* 🧭 ESTILO BARRA LATERAL (SIDEBAR) — FINAL UNIFICADO       */
+/* ========================================================= */
+
 .sidebar {
   width: 250px;
   height: 100vh;
-  background: #1e293b;
-  color: white;
+  /* Fondo claro, sombra sutil */
+  background: white; 
+  color: #222; 
   position: fixed;
   left: 0;
   top: 0;
-  padding: 20px;
+  padding: 24px; 
   display: flex;
   flex-direction: column;
-  box-shadow: 4px 0 12px rgba(0,0,0,0.2);
+  box-shadow: 2px 0 10px rgba(0,0,0,0.08); 
+  border-right: 1px solid #eee; 
+  z-index: 500; 
 }
+
+/* -------------------------------------- */
+/* PERFIL Y AVATAR                        */
+/* -------------------------------------- */
 
 .profile {
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 30px; 
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee; /* Separador sutil */
 }
 
 .avatar {
@@ -22,12 +35,25 @@
   height: 70px;
   border-radius: 50%;
   margin-bottom: 10px;
+  border: 3px solid #007bff; /* Borde de avatar en color primario */
+  object-fit: cover;
+}
+
+.profile h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0;
+  color: #222;
 }
 
 .role {
-  font-size: 12px;
-  opacity: 0.7;
+  font-size: 13px;
+  color: #666; 
 }
+
+/* -------------------------------------- */
+/* MENÚ DE NAVEGACIÓN                     */
+/* -------------------------------------- */
 
 .menu {
   list-style: none;
@@ -36,59 +62,108 @@
 }
 
 .menu li {
-  padding: 12px;
-  margin-bottom: 8px;
+  padding: 12px 16px; 
+  margin-bottom: 6px;
   border-radius: 10px;
   display: flex;
   align-items: center;
   gap: 12px;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #444; 
   transition: 0.25s ease;
+  /* Asegura que los íconos (<i>) se vean bien */
+  line-height: 1.2; 
+}
+
+.menu li i {
+    font-size: 1.1em; /* Ajusta el tamaño del ícono */
 }
 
 .menu li:hover {
-  background: #334155;
+  background: #f0f0f0; 
+  color: #222;
 }
+
+/* Estilo para enlace activo (ej. si usas una clase 'active') */
+.menu li.active {
+  background: #f0f8ff; 
+  color: #007bff; 
+  font-weight: 600;
+}
+
+
+/* -------------------------------------- */
+/* BOTÓN DE CERRAR SESIÓN (LOGOUT)        */
+/* -------------------------------------- */
 
 .logout {
   margin-top: auto;
-  background: #e11d48;
+  /* Botón de acción principal: NEGRO */
+  background: black; 
+  color: white;
+  padding: 12px 16px !important; /* Usamos !important para anular el padding de .menu li si es necesario */
+  font-weight: 600;
+  border-radius: 10px;
+  transition: 0.25s ease;
 }
 
 .logout:hover {
-  background: #be123c;
+  background: #333; 
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* Ajuste para que el contenido principal no quede detrás del sidebar */
-.admin-main-content {
-  margin-left: 250px;
-  padding: 40px;
-  width: calc(100% - 250px);
-}
+/* -------------------------------------- */
+/* RESPONSIVE (Móvil)                     */
+/* -------------------------------------- */
 
-/* Responsive: sidebar colapsable */
 @media (max-width: 768px) {
   .sidebar {
     width: 100%;
     height: auto;
     flex-direction: row;
     overflow-x: auto;
+    padding: 15px 10px; 
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+    border-right: none;
+    border-bottom: 1px solid #eee;
+    position: static; 
+  }
+
+  .profile {
+    display: none; 
   }
 
   .menu {
     display: flex;
     flex-direction: row;
+    gap: 5px;
+    margin: 0 auto;
+    width: 100%;
+    justify-content: space-around;
   }
 
   .menu li {
     white-space: nowrap;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    flex-shrink: 0; 
+    flex-direction: column; /* Apila ícono y texto */
+    gap: 2px;
   }
-
-  .admin-main-content {
-    margin-left: 0;
-    margin-top: 20px;
-    width: 100%;
-    padding: 20px;
+  
+  /* Ocultar texto en móvil para los elementos principales (dejar solo el ícono) */
+  .menu li:not(.logout) {
+      font-size: 0.8rem; /* Tamaño de fuente más pequeño si dejamos el texto */
+      /* Si prefieres SOLO ÍCONOS, descomenta las siguientes líneas y usa solo los <i> en el HTML */
+      /* gap: 0; */
+      /* padding: 10px; */
+      /* font-size: 0; */ 
+  }
+  
+  .logout {
+    display: none; /* Mejor mover el logout a un menú de hamburguesa en móvil */
   }
 }

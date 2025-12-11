@@ -1,10 +1,10 @@
-/* Estilos para user-dashboard.component.css */
-.user-layout {
+/* Estilos para programmer-dashboard.component.css */
+.programmer-layout {
   display: flex;
   height: 100vh; /* Ocupa el 100% de la altura de la ventana */
 }
 
-.user-content {
+.programmer-content {
   flex-grow: 1; /* Permite que el contenido ocupe el espacio restante */
   padding: 20px;
   overflow-y: auto; /* Permite desplazamiento si el contenido es demasiado largo */

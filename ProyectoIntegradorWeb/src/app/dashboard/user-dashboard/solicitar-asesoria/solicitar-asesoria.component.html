@@ -12,6 +12,41 @@
 
     <form [formGroup]="asesoriaForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
+        <label for="fechaAsesoria">Seleccionar Fecha:</label>
+        <select
+          id="fechaAsesoria"
+          formControlName="fechaAsesoria"
+          (change)="onDateSelected($event)"
+          [class.is-invalid]="fechaAsesoria && fechaAsesoria.invalid && (fechaAsesoria.dirty || fechaAsesoria.touched)"
+        >
+          <option [value]="null" disabled>Selecciona una fecha</option>
+          <option *ngFor="let date of availableDates" [value]="date">{{ date | date:
+          'fullDate' }}</option>
+        </select>
+        <div *ngIf="fechaAsesoria && fechaAsesoria.invalid && (fechaAsesoria.dirty || fechaAsesoria.touched)" class="validation-error">
+          <div *ngIf="fechaAsesoria.errors?.[
+          'required']">La fecha de asesoría es requerida.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="horaAsesoria">Seleccionar Hora:</label>
+        <select
+          id="horaAsesoria"
+          formControlName="horaAsesoria"
+          [disabled]="!fechaAsesoria?.value || availableTimes.length === 0"
+          [class.is-invalid]="horaAsesoria && horaAsesoria.invalid && (horaAsesoria.dirty || horaAsesoria.touched)"
+        >
+          <option [value]="null" disabled>Selecciona una hora</option>
+          <option *ngFor="let time of availableTimes" [value]="time">{{ time }}</option>
+        </select>
+        <div *ngIf="horaAsesoria && horaAsesoria.invalid && (horaAsesoria.dirty || horaAsesoria.touched)" class="validation-error">
+          <div *ngIf="horaAsesoria.errors?.[
+          'required']">La hora de asesoría es requerida.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
         <label for="mensaje">Mensaje:</label>
         <textarea
           id="mensaje"
@@ -20,8 +55,10 @@
           placeholder="Describe en detalle tu solicitud de asesoría (mínimo 20 caracteres)."
         ></textarea>
         <div *ngIf="mensaje && mensaje.invalid && (mensaje.dirty || mensaje.touched)" class="validation-error">
-          <div *ngIf="mensaje.errors?.['required']">El mensaje es requerido.</div>
-          <div *ngIf="mensaje.errors?.['minlength']">El mensaje debe tener al menos 20 caracteres.</div>
+          <div *ngIf="mensaje.errors?.[
+          'required']">El mensaje es requerido.</div>
+          <div *ngIf="mensaje.errors?.[
+          'minlength']">El mensaje debe tener al menos 20 caracteres.</div>
         </div>
       </div>
 

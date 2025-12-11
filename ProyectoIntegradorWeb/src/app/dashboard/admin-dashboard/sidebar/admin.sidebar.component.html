@@ -17,6 +17,9 @@
     Asesorías (Admin)
 </li>
 
+    <li *ngIf="isAdmin$ | async" (click)="go('/admin/programmers')">
+      <i class="fa-solid fa-users-gear"></i> Gestión de Programadores
+    </li>
 
     <li (click)="nav('portafolio')">
       <i class="fa-solid fa-folder-open"></i> Mi Portafolio

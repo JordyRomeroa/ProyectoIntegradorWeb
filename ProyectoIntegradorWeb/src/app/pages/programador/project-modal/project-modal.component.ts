@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Project } from '../../../models/project.interface';
@@ -10,50 +10,48 @@ import { Project } from '../../../models/project.interface';
   templateUrl: './project-modal.component.html',
   styleUrls: ['./project-modal.component.css']
 })
-export class ProjectModalComponent implements OnInit {
+export class ProjectModalComponent implements OnInit, OnChanges {
   @Input() project: Project | null = null;
   @Input() isOpen: boolean = false;
   @Output() close = new EventEmitter<void>();
   @Output() save = new EventEmitter<Project>();
 
-  editableProject: Project = {
-    id: '',
-    uid: '',
-    title: '',
-    description: '',
-    imageUrl: '',
-    status: 'En desarrollo',
-    createdAt: new Date()
-  };
+  editableProject: Project = this.getDefaultProject();
 
   ngOnInit() {
-    if (this.project) {
-      this.editableProject = { ...this.project };
-    } else {
-      this.resetForm();
+    this.initializeEditableProject();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['project'] || changes['isOpen']) {
+      this.initializeEditableProject();
     }
   }
 
-  ngOnChanges() {
-    if (this.isOpen) {
-      if (this.project) {
-        this.editableProject = { ...this.project };
-      } else {
-        this.resetForm();
-      }
-    }
-  }
-
-  resetForm() {
-    this.editableProject = {
-      id: '',
+  private getDefaultProject(): Project {
+    return {
       uid: '',
-      title: '',
+      name: '',
       description: '',
+      title:  '',
       imageUrl: '',
+      roleInProject: '',
+      technologies: [],
+      repositoryLink: '',
+      deployLink: '',
+      type: 'Academico',
       status: 'En desarrollo',
       createdAt: new Date()
     };
+  }
+
+  private initializeEditableProject(): void {
+    if (this.project) {
+      // Deep copy to avoid modifying the input project directly
+      this.editableProject = { ...this.project };
+    } else {
+      this.editableProject = this.getDefaultProject();
+    }
   }
 
   onSave() {
@@ -62,5 +60,6 @@ export class ProjectModalComponent implements OnInit {
 
   onClose() {
     this.close.emit();
+    this.editableProject = this.getDefaultProject(); // Reset form on close
   }
 }

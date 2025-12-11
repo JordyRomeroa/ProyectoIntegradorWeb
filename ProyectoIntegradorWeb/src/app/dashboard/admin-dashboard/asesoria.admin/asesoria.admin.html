@@ -1,18 +1,143 @@
 <div class="asesorias-container">
-  <h2>Solicitudes de Asesorías</h2>
+  <app-admin-sidebar></app-admin-sidebar>
+  <div class="main-content">
+    <h2>Gestión de Horarios de Programadores</h2>
 
-  <table id="tablaAsesorias">
-    <thead>
-      <tr>
-        <th>Usuario</th>
-        <th>Email</th>
-        <th>Mensaje</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
+    <div class="programmer-selection">
+      <label for="programmerSelect">Seleccionar Programador:</label>
+      <select id="programmerSelect" (change)="onProgrammerSelected($event)" class="form-select">
+        <option value="">-- Seleccione un programador --</option>
+        <option *ngFor="let programmer of programmers$ | async" [value]="programmer.uid">
+          {{ programmer.name }} {{ programmer.lastname }} ({{ programmer.email }})
+        </option>
+      </select>
+    </div>
 
-    <tbody id="tbodyAsesorias">
-      <!-- Las filas serán agregadas dinámicamente desde TypeScript -->
-    </tbody>
-  </table>
-</div>
+    <div *ngIf="selectedProgrammerId" class="schedule-management">
+  <h3>Horarios de {{ getProgrammerNameFromList(programmers$ | async) }}</h3>
+
+  <div class="schedule-list" *ngIf="schedules$ | async as schedules">
+    <h4>Horarios Registrados</h4>
+    <p *ngIf="schedules.length === 0">No hay horarios registrados para este programador.</p>
+    <table *ngIf="schedules.length > 0" class="table">
+      <thead>
+        <tr>
+          <th>Día</th>
+          <th>Inicio</th>
+          <th>Fin</th>
+          <th>Activo</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let schedule of schedules">
+          <td>{{ schedule.dayOfWeek }}</td>
+          <td>{{ schedule.startTime }}</td>
+          <td>{{ schedule.endTime }}</td>
+          <td>{{ schedule.isActive ? 'Sí' : 'No' }}</td>
+          <td>
+            <button class="btn btn-sm btn-info" (click)="editSchedule(schedule)">Editar</button>
+            <button class="btn btn-sm btn-danger" (click)="deleteSchedule(schedule.id!)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+        <table *ngIf="((schedules$ | async)?.length ?? 0) > 0" class="table">
+          <thead>
+            <tr>
+              <th>Día</th>
+              <th>Inicio</th>
+              <th>Fin</th>
+              <th>Activo</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let schedule of schedules$ | async">
+              <td>{{ schedule.dayOfWeek }}</td>
+              <td>{{ schedule.startTime }}</td>
+              <td>{{ schedule.endTime }}</td>
+              <td>{{ schedule.isActive ? 'Sí' : 'No' }}</td>
+              <td>
+                <button class="btn btn-sm btn-info" (click)="editSchedule(schedule)">Editar</button>
+                <button class="btn btn-sm btn-danger" (click)="deleteSchedule(schedule.id!)">Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="schedule-form">
+        <h4>{{ editingSchedule ? 'Editar Horario' : 'Añadir Nuevo Horario' }}</h4>
+        <form [formGroup]="scheduleForm" (ngSubmit)="saveSchedule()">
+          <div class="mb-3">
+            <label for="dayOfWeek" class="form-label">Día de la Semana</label>
+            <select id="dayOfWeek" formControlName="dayOfWeek" class="form-select">
+              <option value="">Seleccione un día</option>
+              <option *ngFor="let day of daysOfWeek" [value]="day">{{ day }}</option>
+            </select>
+            <div *ngIf="scheduleForm.get('dayOfWeek')?.invalid && scheduleForm.get('dayOfWeek')?.touched" class="text-danger">
+              El día es requerido.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="startTime" class="form-label">Hora de Inicio</label>
+              <select id="startTime" formControlName="startTime" class="form-select">
+                <option value="">Seleccione hora</option>
+                <option *ngFor="let time of timeSlots" [value]="time">{{ time }}</option>
+              </select>
+              <div *ngIf="scheduleForm.get('startTime')?.invalid && scheduleForm.get('startTime')?.touched" class="text-danger">
+                La hora de inicio es requerida.
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="endTime" class="form-label">Hora de Fin</label>
+              <select id="endTime" formControlName="endTime" class="form-select">
+                <option value="">Seleccione hora</option>
+                <option *ngFor="let time of timeSlots" [value]="time">{{ time }}</option>
+              </select>
+              <div *ngIf="scheduleForm.get('endTime')?.invalid && scheduleForm.get('endTime')?.touched" class="text-danger">
+                La hora de fin es requerida.
+              </div>
+            </div>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" id="isActive" formControlName="isActive" class="form-check-input">
+            <label for="isActive" class="form-check-label">Activo</label>
+          </div>
+          <button type="submit" class="btn btn-primary" [disabled]="scheduleForm.invalid">
+            {{ editingSchedule ? 'Actualizar Horario' : 'Guardar Horario' }}
+          </button>
+          <button type="button" class="btn btn-secondary ms-2" (click)="resetForm()">Cancelar</button>
+        </form>
+      </div>
+    </div>
+
+    <hr>
+
+    <h2>Solicitudes de Asesorías</h2>
+    <table id="tablaAsesorias" class="table">
+      <thead>
+        <tr>
+          <th>Usuario</th>
+          <th>Email</th>
+          <th>Mensaje</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let asesoria of asesorias">
+          <td>{{ asesoria.nombre }}</td>
+          <td>{{ asesoria.email }}</td>
+          <td>{{ asesoria.mensaje }}</td>
+          <td>
+            <button class="btn btn-success me-2" (click)="aceptar(asesoria.id)">Aceptar</button>
+            <button class="btn btn-danger" (click)="rechazar(asesoria.id)">Rechazar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+

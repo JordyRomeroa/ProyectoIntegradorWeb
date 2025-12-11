@@ -1,80 +1,281 @@
-.title {
-  font-size: 26px;
+/* ========================================================= */
+/* 📅 ESTILO GESTIÓN DE HORARIOS Y ASESORÍAS ADMIN            */
+/* ========================================================= */
+
+/* Contenedor principal de la vista */
+.asesorias-container {
+  /* Si el sidebar es fijo, este contenedor no necesita width: 100% */
+  display: flex;
+  min-height: 100vh;
+  background-color: #f8f8f8; /* Fondo muy claro para el cuerpo */
+  color: #222;
+  font-family: Arial, sans-serif;
+}
+
+/* Contenido Principal (Ajuste para Sidebar) */
+/* Asumimos que .admin-main-content ya maneja el margin-left, 
+   usaremos el nombre de clase del HTML: .main-content */
+.main-content {
+  margin-left: 250px; /* Espacio para el sidebar fijo */
+  padding: 40px;
+  width: calc(100% - 250px);
+}
+
+/* -------------------------------------- */
+/* TÍTULOS Y CABECERAS                    */
+/* -------------------------------------- */
+.main-content h2 {
+  font-size: 2rem;
   font-weight: 800;
-  margin-bottom: 22px;
-  color: #1a1a1a;
-  text-align: center;
+  margin-bottom: 30px;
+  color: #222;
+  text-align: left;
 }
 
-.asesorias-table-container {
-  width: 100%;
-  overflow-x: auto;
+.main-content h3, .main-content h4 {
+  font-weight: 700;
   margin-top: 20px;
+  margin-bottom: 15px;
+  color: #333;
 }
 
-table {
+/* -------------------------------------- */
+/* SELECCIÓN DE PROGRAMADOR               */
+/* -------------------------------------- */
+.programmer-selection {
+  margin-bottom: 30px;
+  max-width: 500px;
+}
+
+.programmer-selection label {
+  display: block;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 8px;
+}
+
+/* Select Box Unificado (Usamos la clase form-select del HTML) */
+.form-select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+  color: #222;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.25s ease;
+  appearance: none;
+  /* (Aquí iría la configuración de la flecha SVG si fuera necesario) */
+}
+
+.form-select:focus {
+  border-color: #222;
+  background-color: #f8f8f8;
+}
+
+/* -------------------------------------- */
+/* GESTIÓN DE HORARIOS Y TABLAS           */
+/* -------------------------------------- */
+
+.schedule-management {
+  background: white;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  margin-bottom: 40px;
+}
+
+.schedule-list {
+  margin-bottom: 30px;
+}
+
+/* Estilo de la tabla de horarios y asesorías */
+.table {
   width: 100%;
   border-collapse: collapse;
   background: white;
-  border-radius: 14px;
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-thead {
-  background: #0f172a;
+.table thead {
+  background: black;
   color: white;
 }
 
-th, td {
+.table th, .table td {
   padding: 14px;
   font-size: 0.95rem;
-  border-bottom: 1px solid #e2e8f0;
+  text-align: left;
+  border-bottom: 1px solid #ececec;
 }
 
-tbody tr:nth-child(even) {
-  background: #f8fafc;
+.table tbody tr:nth-child(even) {
+  background: #fcfcfc;
 }
 
-tbody tr:hover {
-  background: #eef2ff;
+.table tbody tr:hover {
+  background: #f0f0f0;
 }
 
-.mensaje {
-  max-width: 300px;
-  white-space: normal;
-  word-wrap: break-word;
-}
-
-.actions {
-  display: flex;
-  gap: 10px;
-}
-
-.btn-aceptar {
-  background: #16a34a;
-  color: white;
+/* Botones de acción dentro de la tabla */
+.table td .btn {
   padding: 8px 12px;
   border-radius: 8px;
   border: none;
   cursor: pointer;
-  transition: 0.2s;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: .2s ease;
+  margin-right: 8px;
 }
 
-.btn-aceptar:hover {
-  background: #15803d;
-}
-
-.btn-rechazar {
-  background: #dc2626;
+/* Botones de tabla con estilo unificado */
+.btn-info { /* Editar/Aceptar */
+  background: #007bff;
   color: white;
-  padding: 8px 12px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  transition: 0.2s;
+}
+.btn-info:hover {
+  background: #0056b3;
 }
 
-.btn-rechazar:hover {
-  background: #b91c1c;
+.btn-danger { /* Eliminar/Rechazar */
+  background: #e60023;
+  color: white;
+}
+.btn-danger:hover {
+  background: #b3001b;
+}
+
+.btn-success { /* Aceptar (para solicitudes) */
+  background: #00a854;
+  color: white;
+}
+.btn-success:hover {
+  background: #008842;
+}
+
+
+/* -------------------------------------- */
+/* FORMULARIO DE EDICIÓN/AÑADIR HORARIO   */
+/* -------------------------------------- */
+.schedule-form {
+  padding: 20px 0 0;
+}
+
+.schedule-form .form-label {
+  display: block;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 6px;
+}
+
+.schedule-form .form-select {
+  /* Ya definido arriba, solo se hereda */
+  margin-bottom: 5px;
+}
+
+/* Campo de checkbox (Activo) */
+.form-check {
+  margin-top: 20px;
+  margin-bottom: 20px !important;
+}
+
+.form-check-input {
+  /* Estilo base de checkbox */
+  margin-right: 8px;
+  border: 1.5px solid #ddd;
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+}
+
+.form-check-label {
+  font-weight: 500;
+  color: #444;
+  cursor: pointer;
+}
+
+.text-danger {
+  color: #e60023;
+  font-size: 0.85rem;
+  margin-top: 3px;
+}
+
+/* Botones del Formulario (Guardar/Cancelar) */
+.schedule-form .btn-primary {
+  background: black;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  border: none;
+  transition: .25s ease;
+}
+
+.schedule-form .btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.schedule-form .btn-secondary {
+  background: #e5e5e5;
+  color: #222;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  border: none;
+  transition: .25s ease;
+}
+
+.schedule-form .btn-secondary:hover {
+  background: #dcdcdc;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 40px 0;
+}
+
+/* ========================================================= */
+/* RESPONSIVE                                                */
+/* ========================================================= */
+@media (max-width: 768px) {
+  /* Sidebar */
+  .main-content {
+    margin-left: 0; /* Ocupa todo el ancho si el sidebar se hace estático/horizontal */
+    width: 100%;
+    padding: 20px;
+  }
+  
+  /* Tablas responsivas: ya tienen scroll horizontal por defecto, pero se mejoran acciones */
+  .table td {
+    white-space: normal; /* Permite que el texto se rompa si es necesario */
+  }
+
+  .table th, .table td {
+    padding: 10px;
+  }
+  
+  .schedule-management {
+    padding: 15px;
+  }
+
+  /* Formulario: apilar inputs en móvil */
+  .schedule-form .row > div {
+    width: 100%;
+  }
+
+  /* Botones de acción en tabla (se apilan verticalmente si es necesario) */
+  .table td:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .table td .btn {
+    margin-right: 0;
+  }
 }

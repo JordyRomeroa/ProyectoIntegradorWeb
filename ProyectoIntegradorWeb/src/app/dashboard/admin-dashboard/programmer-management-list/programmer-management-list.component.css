@@ -1,168 +1,257 @@
-:host {
-  display: block;
-  padding: 2rem;
-  background-color: #1a1a1a;
-  min-height: calc(100vh - 60px); /* Ajusta según la altura de tu navbar si existe */
-  color: #e0e0e0;
-  font-family: Arial, sans-serif;
-  position: relative;
-  overflow: hidden;
-}
+/* ========================================================= */
+/* 👥 ESTILO GESTIÓN DE PROGRAMADORES (VISTA CRUD)           */
+/* ========================================================= */
 
-.admin-programmers-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
-}
+/* -------------------------------------- */
+/* TÍTULO Y BOTÓN DE ACCIÓN PRINCIPAL     */
+/* -------------------------------------- */
 
 h2 {
-  text-align: center;
-  color: #00e676; /* Color vibrante para títulos */
-  margin-bottom: 2rem;
-  font-size: 2.5rem;
-  font-weight: bold;
-  letter-spacing: 1px;
-}
-
-.error-message {
-  color: #ff3d00;
-  background-color: #2a2a2a;
-  border: 1px solid #ff3d00;
-  padding: 1rem;
-  border-radius: 8px;
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-.add-button {
-  background-color: #00e676;
-  color: #1a1a1a;
-  border: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 25px;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  margin-bottom: 2rem;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.add-button:hover {
-  background-color: #00ff80;
-  transform: translateY(-2px);
-}
-
-.programmers-table-container {
-  overflow-x: auto;
-  background-color: #2a2a2a;
-  border-radius: 15px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-  border: 1px solid #3a3a3a;
-}
-
-.programmers-table {
-  width: 100%;
-  border-collapse: collapse;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 22px;
+  color: #222;
   text-align: left;
 }
 
-.programmers-table th,
-.programmers-table td {
-  padding: 1rem;
-  border-bottom: 1px solid #3a3a3a;
-}
-
-.programmers-table th {
-  background-color: #3a3a3a;
-  color: #00e676;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 0.9rem;
-}
-
-.programmers-table tbody tr:hover {
-  background-color: #333;
-}
-
-.programmer-avatar-sm {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #00e676;
-}
-
-.actions button {
-  margin-right: 0.5rem;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
+/* Botón Crear — Estilo unificado (Negro) */
+.create-button {
+  background: black;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 10px;
   cursor: pointer;
-  font-size: 0.85rem;
-  font-weight: bold;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: 0.25s ease;
+  margin-bottom: 20px;
 }
 
-.edit-button {
-  background-color: #007bff; /* Azul */
-  color: #ffffff;
+.create-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+}
+
+/* -------------------------------------- */
+/* TABLA DE USUARIOS                      */
+/* -------------------------------------- */
+
+.programmers-table-container {
+  overflow-x: auto;
+  margin-top: 15px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 14px; /* Radio consistente */
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+}
+
+thead {
+  background: black;
+  color: white;
+}
+
+th, td {
+  padding: 14px;
+  font-size: 0.95rem;
+  text-align: left;
+  border-bottom: 1px solid #ececec;
+}
+
+tbody tr:nth-child(even) {
+  background: #f8f8f8;
+}
+
+tbody tr:hover {
+  background: #f0f0f0;
+}
+
+/* Botones de Editar/Eliminar dentro de la tabla */
+.edit-button, .delete-button {
+  padding: 10px 14px;
+  border-radius: 10px;
   border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: .25s ease;
+  margin-right: 8px; /* Espacio entre botones */
+  white-space: nowrap; 
 }
 
+.edit-button { /* Botón de Editar (Azul Primario) */
+  background: #007bff;
+  color: white;
+}
 .edit-button:hover {
-  background-color: #0056b3;
-  transform: translateY(-2px);
+  background: #0056b3;
 }
 
-.delete-button {
-  background-color: #dc3545; /* Rojo */
-  color: #ffffff;
-  border: none;
+.delete-button { /* Botón de Eliminar (Rojo Consistente) */
+  background: #e60023;
+  color: white;
 }
-
 .delete-button:hover {
-  background-color: #c82333;
-  transform: translateY(-2px);
+  background: #b3001b;
 }
 
-.no-programmers {
+/* -------------------------------------- */
+/* ESTILOS DE MODALES (Crear, Editar, Eliminar) */
+/* -------------------------------------- */
+
+/* Fondo del Modal */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Tarjeta de Contenido del Modal */
+.modal-content {
+  background: white;
+  padding: 30px 38px;
+  border-radius: 20px; /* Radio consistente */
+  box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+  animation: pop 0.4s ease-out;
   text-align: center;
-  font-style: italic;
-  color: #888;
-  padding: 2rem;
+  width: 95%;
+  max-width: 450px;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  :host {
-    padding: 1rem;
-  }
+.modal-content h3 {
+  text-align: center;
+  font-weight: 800;
+  margin-bottom: 20px;
+  color: #222;
+  font-size: 1.6rem;
+}
 
-  h2 {
-    font-size: 2rem;
-  }
+.modal-content p {
+  color: #444;
+  margin-bottom: 20px;
+}
 
-  .programmers-table th,
-  .programmers-table td {
-    padding: 0.8rem;
-    font-size: 0.9rem;
-  }
+/* Grupos de Formulario (Reutilizados del formulario de registro) */
+.form-group {
+  margin-bottom: 1.2rem;
+  text-align: left;
+}
 
-  .programmer-avatar-sm {
-    width: 40px;
-    height: 40px;
-  }
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #444;
+  font-size: 1rem;
+}
 
-  .actions button {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.75rem;
-    margin-right: 0.3rem;
-  }
+/* Inputs de Modal */
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid #ddd;
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.25s ease;
+  background: #fff;
+  color: #222;
+  /* Reset appearance para select, si aplica */
+  appearance: none; 
+}
 
-  .add-button {
-    padding: 0.7rem 1.2rem;
-    font-size: 0.9rem;
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #222;
+  background: #f8f8f8;
+}
+
+.form-group input:disabled {
+  background: #e9ecef;
+  color: #888;
+  cursor: not-allowed;
+}
+
+/* -------------------------------------- */
+/* BOTONES DE ACCIÓN DEL MODAL            */
+/* -------------------------------------- */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end; /* Alineación por defecto: derecha */
+  margin-top: 20px;
+  gap: 12px;
+}
+
+.action-button {
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .25s ease;
+  min-width: 100px;
+}
+
+.action-button.primary { /* Crear / Guardar Cambios */
+  background: black;
+  color: white;
+}
+.action-button.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.action-button.secondary { /* Cancelar */
+  background: #e5e5e5;
+  color: #222;
+}
+.action-button.secondary:hover {
+  background: #dcdcdc;
+}
+
+.action-button.delete { /* Eliminar (en el modal) */
+  background: #e60023;
+  color: white;
+}
+.action-button.delete:hover {
+  background: #b3001b;
+}
+
+/* -------------------------------------- */
+/* ANIMACIÓN (Reutilizada del login)      */
+/* -------------------------------------- */
+@keyframes pop {
+  0% { transform: scale(0.85); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ========================================================= */
+/* RESPONSIVE                                                */
+/* ========================================================= */
+@media (max-width: 500px) {
+  .modal-content {
+    padding: 24px;
+  }
+  
+  .modal-actions {
+    flex-direction: column-reverse; 
+    gap: 10px;
+    justify-content: center;
+  }
+  .action-button {
+    width: 100%;
+    padding: 14px 0;
   }
 }

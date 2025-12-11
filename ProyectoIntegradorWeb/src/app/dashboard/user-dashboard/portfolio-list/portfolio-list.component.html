@@ -1,13 +1,25 @@
 <div class="portfolio-list-container">
   <h2>Explorar Programadores</h2>
 
-  <div class="search-bar">
-    <input
-      type="text"
-      [(ngModel)]="searchTerm"
-      (input)="searchProgrammers()"
-      placeholder="Buscar por nombre o habilidad..."
-    />
+  <div class="search-and-filter-bar"> <!-- New div to group search and filter -->
+    <div class="search-bar">
+      <input
+        type="text"
+        [(ngModel)]="searchTerm"
+        (input)="searchProgrammers()"
+        placeholder="Buscar por nombre o habilidad..."
+      />
+    </div>
+    <div class="filter-options">
+      <label>
+        <input
+          type="checkbox"
+          [(ngModel)]="showAvailableOnly"
+          (change)="toggleShowAvailableOnly()"
+        />
+        Mostrar solo disponibles para asesorías
+      </label>
+    </div>
   </div>
 
   <div class="programmer-grid">
@@ -21,6 +33,12 @@
       <p class="programmer-description">{{ programmer.description | slice:0:100 }}...</p>
       <div class="programmer-skills">
         <span *ngFor="let skill of programmer.skills" class="skill-tag">{{ skill }}</span>
+      </div>
+      <div *ngIf="programmer.isAvailable" class="availability-badge available">
+        Disponible para asesorías
+      </div>
+      <div *ngIf="!programmer.isAvailable" class="availability-badge not-available">
+        No disponible para asesorías
       </div>
       <button (click)="viewPortfolio(programmer.uid)" class="view-portfolio-button">Ver Portafolio</button>
     </div>

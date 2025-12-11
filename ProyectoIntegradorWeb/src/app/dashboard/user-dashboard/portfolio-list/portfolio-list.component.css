@@ -32,11 +32,20 @@ h2 {
   letter-spacing: normal;
 }
 
+/* New styles for search and filter bar */
+.search-and-filter-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 1rem; /* Space between search bar and filter options */
+}
+
 /* Barra de Búsqueda */
 .search-bar {
   display: flex;
   justify-content: center;
-  margin-bottom: 2rem;
+  width: 100%; /* Ensure search bar takes full width of its container */
 }
 
 .search-bar input {
@@ -62,6 +71,22 @@ h2 {
   background: #f8f8f8;
   /* Sombra de enfoque sutil */
   box-shadow: 0 0 0 3px rgba(34, 34, 34, 0.1); 
+}
+
+/* Filter options for availability */
+.filter-options {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  color: #444;
+}
+
+.filter-options input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #007bff; /* Primary color for checkbox */
+  cursor: pointer;
 }
 
 /* Grid de Tarjetas */
@@ -93,6 +118,7 @@ h2 {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.10); 
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   border: 1px solid #eee; /* Borde muy sutil */
+  position: relative; /* Needed for absolute positioning of badge */
 }
 
 .programmer-card:hover {
@@ -145,6 +171,27 @@ h2 {
   border: 1px solid #ddd; /* Borde sutil */
 }
 
+/* Availability Badge */
+.availability-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 0.3rem 0.7rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.availability-badge.available {
+  background-color: #28a745; /* Green for available */
+}
+
+.availability-badge.not-available {
+  background-color: #dc3545; /* Red for not available */
+}
+
 /* Botón de Portafolio (Acción Principal) */
 .view-portfolio-button {
   background: black; /* Botón principal consistente (Negro) */
@@ -191,5 +238,13 @@ h2 {
 
   .programmer-card h3 {
     font-size: 1.4rem;
+  }
+
+  .search-and-filter-bar {
+    flex-direction: column;
+  }
+
+  .filter-options {
+    justify-content: center; /* Center filter options on small screens */
   }
 }

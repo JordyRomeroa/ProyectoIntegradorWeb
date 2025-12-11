@@ -1,0 +1,111 @@
+.asesorias-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.card-section {
+  margin-bottom: 30px;
+}
+
+.card-section h3 {
+  color: #555;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.no-asesorias {
+  padding: 15px;
+  background-color: #e9ecef;
+  border-radius: 5px;
+  color: #666;
+  text-align: center;
+}
+
+.asesoria-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.asesoria-card p {
+  margin: 0;
+  color: #444;
+}
+
+.asesoria-card strong {
+  color: #333;
+}
+
+.asesoria-card.pending {
+  border-left: 5px solid #ffc107;
+}
+
+.asesoria-card.completed {
+  border-left: 5px solid #28a745;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  align-items: center;
+}
+
+.actions textarea {
+  flex-grow: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  min-height: 40px;
+}
+
+.btn-accept,
+.btn-reject,
+.btn-complete {
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #fff;
+  border: none;
+}
+
+.btn-accept {
+  background-color: #28a745;
+}
+
+.btn-reject {
+  background-color: #dc3545;
+}
+
+.btn-complete {
+  background-color: #007bff;
+}
+
+.btn-accept:hover {
+  background-color: #218838;
+}
+
+.btn-reject:hover {
+  background-color: #c82333;
+}
+
+.btn-complete:hover {
+  background-color: #0056b3;
+}

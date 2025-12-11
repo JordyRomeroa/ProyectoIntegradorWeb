@@ -7,4 +7,6 @@ export interface Asesoria {
   mensaje: string;
   estado: 'Pendiente' | 'Aceptada' | 'Rechazada' | 'Completada';
   fechaSolicitud: Date;
+  fechaAsesoria: Date; // New field for the selected date of the advisory
+  horaAsesoria: string; // New field for the selected time of the advisory (e.g., 'HH:mm')
 }

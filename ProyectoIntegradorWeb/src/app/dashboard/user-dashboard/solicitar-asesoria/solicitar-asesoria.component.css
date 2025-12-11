@@ -1,5 +1,5 @@
 /* ========================================================= */
-/* ✉️ ESTILO FORMULARIO ASESORÍA — ADAPTADO AL TEMA PRINCIPAL */
+/* ✉️ ESTILO FORMULARIO ASESORÍA — DEFINITIVO CON SELECT     */
 /* ========================================================= */
 
 :host {
@@ -8,13 +8,13 @@
   justify-content: center;
   align-items: center;
   min-height: calc(100vh - 60px); 
-  /* 🔑 CAMBIO CLAVE: Fondo claro (igual que el login) */
+  /* Fondo consistente */
   background-image: radial-gradient(#e5e5e5 1px, transparent 1px);
   background-size: 20px 20px;
   background-color: white; 
   color: #222; 
   font-family: Arial, sans-serif;
-  padding: 40px; /* Padding consistente */
+  padding: 40px; 
   position: relative;
   overflow: hidden;
 }
@@ -22,7 +22,6 @@
 .asesoria-container {
   width: 100%;
   max-width: 600px;
-  /* Centrado por flex, margin: auto no es estrictamente necesario, pero ayuda en ciertos contextos */
   margin: auto; 
 }
 
@@ -31,34 +30,33 @@
   text-align: center;
   font-size: 1.2rem;
   padding: 1.5rem;
-  border-radius: 10px; /* Radio consistente */
+  border-radius: 10px; 
   margin-bottom: 1.5rem;
-  background-color: #f8f8f8; /* Fondo claro para mensajes */
+  background-color: #f8f8f8; 
 }
 
 .loading-spinner {
-  color: #007bff; /* Azul primario */
+  color: #007bff; 
   border: 1px solid #007bff;
 }
 
 .error-message {
-  color: #e60023; /* Rojo consistente */
+  color: #e60023; 
   border: 1px solid #e60023;
-  background-color: #fff0f3; /* Fondo suave para error */
+  background-color: #fff0f3; 
 }
 
 .success-message {
-  color: #007bff; /* Azul primario */
+  color: #007bff; 
   border: 1px solid #007bff;
-  background-color: #f0f8ff; /* Fondo suave para éxito */
+  background-color: #f0f8ff; 
 }
 
 /* Tarjeta del Formulario */
 .asesoria-form-card {
   background: white;
-  border-radius: 24px; /* Radio consistente con la tarjeta principal */
-  padding: 36px 40px; /* Padding consistente con la tarjeta de login */
-  /* Sombra consistente con el login/dashboard */
+  border-radius: 24px; 
+  padding: 36px 40px; 
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
   border: none;
   position: relative;
@@ -69,11 +67,11 @@
   position: absolute;
   top: 1.5rem;
   left: 1.5rem;
-  background-color: #e5e5e5; /* Fondo claro */
+  background-color: #e5e5e5; 
   color: #222;
   border: none;
-  padding: 10px 14px; /* Padding consistente */
-  border-radius: 10px; /* Radio interno más pequeño */
+  padding: 10px 14px; 
+  border-radius: 10px; 
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
@@ -91,36 +89,69 @@
 /* Título */
 h2 {
   text-align: center;
-  color: #222; /* Título principal en negro */
+  color: #222; 
   margin-bottom: 2rem;
-  font-size: 1.9rem; /* Tamaño consistente con el login */
+  font-size: 1.9rem; 
   font-weight: 800;
   letter-spacing: normal;
   padding-top: 1rem;
 }
 
 .programmer-name {
-  color: #444; /* Gris oscuro para el nombre */
+  color: #444; 
   font-weight: 600;
 }
 
 .form-group {
   margin-bottom: 1.5rem;
-  text-align: left; /* Alineación a la izquierda para inputs/labels */
+  text-align: left; 
 }
 
 .form-group label {
   display: block;
   margin-bottom: 0.6rem;
-  color: #444; /* Etiqueta en gris oscuro */
+  color: #444; 
   font-weight: 600;
   font-size: 1rem;
+}
+
+/* Estilo para los nuevos select de fecha y hora */
+.form-group select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+  color: #222;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.25s ease;
+  appearance: none; 
+  /* 💡 Aseguramos que la flecha SVG sea negra para nuestro tema */
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23222222%22%20d%3D%22M287%20173.5c-4.1%204.1-10.7%204.1-14.9%200L146.2%2057.4%2020.3%20173.5c-4.1%204.1-10.7%204.1-14.9%200-4.1-4.1-4.1-10.7%200-14.9l133.5-133.5c4.1-4.1%2010.7-4.1%2014.9%200l133.5%20133.5c4.2%204.2%204.2%2010.7%200%2014.9z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 12px;
+  padding-right: 2.5rem; 
+  /* 🔑 AJUSTE MENOR: Añadir cursor */
+  cursor: pointer; 
+}
+
+.form-group select:focus {
+  border-color: #222;
+  background-color: #f8f8f8;
+}
+
+.form-group select:disabled {
+  background-color: #e9ecef;
+  cursor: not-allowed;
+  opacity: 0.7;
 }
 
 /* Campo de Texto (Textarea) */
 .form-group textarea {
   width: 100%;
-  padding: 0.75rem 1rem; /* Padding consistente con inputs de login */
+  padding: 0.75rem 1rem; 
   border: 1.5px solid #ddd;
   border-radius: 10px;
   background-color: #fff;
@@ -139,7 +170,7 @@ h2 {
 .form-group textarea:focus {
   border-color: #222;
   background: #f8f8f8;
-  box-shadow: none; /* Quitamos la sombra compleja por el estilo más limpio */
+  box-shadow: none; 
 }
 
 .validation-error {
@@ -151,11 +182,11 @@ h2 {
 /* Botón de Enviar (Submit) */
 .submit-button {
   width: 100%;
-  background: black; /* Botón principal consistente (Negro) */
+  background: black; 
   color: white;
   border: none;
-  padding: 14px 0; /* Padding consistente con el login */
-  border-radius: 8px; /* Radio consistente */
+  padding: 14px 0; 
+  border-radius: 8px; 
   font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
@@ -177,7 +208,7 @@ h2 {
 /* Responsive adjustments */
 @media (max-width: 768px) {
   :host {
-    padding: 20px; /* Reducimos el padding general */
+    padding: 20px; 
   }
 
   .asesoria-form-card {
