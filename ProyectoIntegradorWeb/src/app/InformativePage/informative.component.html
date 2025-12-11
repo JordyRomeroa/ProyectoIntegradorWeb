@@ -1,22 +1,5 @@
-<header class="navbar">
 
-  <div class="nav-left">
-    <h1 class="logo">RinconDev</h1>
-    <p class="subtitle">Proyectos & Asesorías</p>
-  </div>
-
-  <nav class="nav-menu">
-    <a class="active" (click)="goInicio()"><i class="fa-solid fa-house"></i> Inicio</a>
-    <a (click)="goProyectos()"><i class="fa-solid fa-diagram-project"></i> Proyectos</a>
-    <a (click)="goEquipo()"><i class="fa-solid fa-users"></i> Equipo</a>
-    <a (click)="goContacto()"><i class="fa-solid fa-arrow-right-to-bracket"></i> Contacto</a>
-  </nav>
-
-  <div class="nav-user" (click)="goLogin()">
-    <i class="fa-solid fa-user"></i>
-  </div>
-
-</header>
+<app-navbar></app-navbar>
 
 
 <main class="content">
@@ -54,14 +37,14 @@
     <div class="team-grid">
 
       <div class="team-card" (click)="goEquipo()">
-        <img src="https://wallpapers.com/images/hd/cute-baby-pikachu-zuh728pq8xahoj3w.jpg">
+        <img src="https://avatars.githubusercontent.com/u/236733553?s=400&u=31346ca94ed28cbe136612268be685ec657698cf&v=4">
         <h3>Jordy Romero</h3>
         <p class="role">Lead Developer & Co-founder</p>
         <p class="desc">Experta en arquitectura de software y sistemas distribuidos. +10 años de experiencia.</p>
       </div>
 
       <div class="team-card" (click)="goEquipo()">
-        <img src="https://i.pinimg.com/736x/13/3a/02/133a020be0e51139e99cf837d72f114d.jpg">
+        <img src="https://avatars.githubusercontent.com/u/185556763?v=4">
         <h3>Nayeli Barbecho</h3>
         <p class="role">Technical Lead & Co-founder</p>
         <p class="desc">Especialista en DevOps, arquitecturas cloud e IA aplicada al desarrollo web.</p>

@@ -1,0 +1,37 @@
+<header class="navbar">
+
+  
+  <div class="nav-left" (click)="goInicio()" style="cursor:pointer;">
+    <h1 class="logo">RinconDev</h1>
+    <p class="subtitle">Proyectos & Asesorías</p>
+  </div>
+
+
+  <nav class="nav-menu">
+    <a class="menu-item" (click)="goInicio()">
+      <i class="fa-solid fa-house"></i> Inicio
+    </a>
+
+    <a class="menu-item" (click)="goProyectos()">
+      <i class="fa-solid fa-diagram-project"></i> Proyectos
+    </a>
+
+    <a class="menu-item" (click)="goEquipo()">
+      <i class="fa-solid fa-users"></i> Equipo
+    </a>
+
+    <a class="menu-item" (click)="goContacto()">
+      <i class="fa-solid fa-envelope"></i> Contacto
+    </a>
+
+    <a class="menu-item" (click)="goAsesorias()">
+      <i class="fa-solid fa-comments"></i> Asesorías
+    </a>
+  </nav>
+
+
+  <div class="nav-user" (click)="goLogin()">
+    <i class="fa-solid fa-user"></i>
+  </div>
+
+</header>

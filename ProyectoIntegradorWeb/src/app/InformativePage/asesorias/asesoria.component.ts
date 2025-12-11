@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 declare global {
   interface Window {
@@ -9,27 +10,27 @@ declare global {
 @Component({
   selector: 'app-asesoria',
   templateUrl: './asesoria.component.html',
-  styleUrls: ['./asesoria.component.css']
+  styleUrls: ['./asesoria.component.css'],
+  imports: [NavbarComponent]
 })
 export class AsesoriaComponent implements OnInit {
 
-  // Configuración del horario del programador
   private readonly startHour = 9;   // 09:00
   private readonly endHour = 18;    // 18:00
   private readonly slotMinutes = 30;
-  private readonly disabledWeekdays = [0, 6]; // 0 = Domingo, 6 = Sábado
+  private readonly disabledWeekdays = [0, 5];
 
   ngOnInit(): void {
-    // Exponer la función al HTML (sin ngSubmit, ni nada de Angular)
+
     window.enviarAsesoriaTS = () => this.enviarSolicitud();
 
-    // Inicializar calendario y horarios
+
     this.configurarFechaMinima();
     this.registrarEventos();
     this.actualizarHorarios();
   }
 
-  /** Pone la fecha mínima del calendario en "hoy" */
+
   private configurarFechaMinima(): void {
     const dateInput = document.getElementById('asesoria-date') as HTMLInputElement | null;
     if (!dateInput) return;
@@ -42,7 +43,7 @@ export class AsesoriaComponent implements OnInit {
     dateInput.value = `${yyyy}-${mm}-${dd}`;
   }
 
-  /** Registra el evento change sobre la fecha para refrescar horarios */
+
   private registrarEventos(): void {
     const dateInput = document.getElementById('asesoria-date') as HTMLInputElement | null;
     if (!dateInput) return;
@@ -52,7 +53,7 @@ export class AsesoriaComponent implements OnInit {
     });
   }
 
-  /** Genera los horarios disponibles según la fecha seleccionada */
+
   private actualizarHorarios(): void {
     const dateInput = document.getElementById('asesoria-date') as HTMLInputElement | null;
     const timeSelect = document.getElementById('asesoria-time') as HTMLSelectElement | null;
@@ -61,7 +62,7 @@ export class AsesoriaComponent implements OnInit {
     if (!dateInput || !timeSelect || !helpLabel) return;
 
     const fechaSeleccionada = dateInput.value ? new Date(dateInput.value + 'T00:00:00') : null;
-    timeSelect.innerHTML = ''; // limpiar opciones
+    timeSelect.innerHTML = '';
 
     if (!fechaSeleccionada || isNaN(fechaSeleccionada.getTime())) {
       helpLabel.innerText = 'Selecciona una fecha para ver los horarios disponibles.';
@@ -70,7 +71,7 @@ export class AsesoriaComponent implements OnInit {
 
     const day = fechaSeleccionada.getDay();
     if (this.disabledWeekdays.includes(day)) {
-      // Fin de semana u otro día bloqueado
+
       const option = document.createElement('option');
       option.value = '';
       option.text = 'No hay horarios disponibles para este día';
@@ -102,7 +103,7 @@ export class AsesoriaComponent implements OnInit {
     helpLabel.innerText = 'Selecciona la hora que mejor se ajuste a tu disponibilidad.';
   }
 
-  /** Envía la solicitud (simulado en front) */
+
   private enviarSolicitud(): void {
     const programmerSelect = document.getElementById('asesoria-programmer') as HTMLSelectElement | null;
     const dateInput = document.getElementById('asesoria-date') as HTMLInputElement | null;
@@ -117,7 +118,7 @@ export class AsesoriaComponent implements OnInit {
     const hora = timeSelect.value;
     const mensaje = messageInput.value.trim();
 
-    // Validaciones básicas
+
     if (!fecha) {
       this.mostrarFeedback(feedback, 'Por favor selecciona una fecha para la asesoría.', false);
       return;
@@ -131,14 +132,13 @@ export class AsesoriaComponent implements OnInit {
       return;
     }
 
-    // Aquí en un proyecto real llamarías a un servicio HTTP para enviar la solicitud.
-    // Por ahora solo mostramos un mensaje elegante.
+
     const resumen = `Tu solicitud de asesoría con ${programmer} para el ${fecha} a las ${hora} ha sido enviada.
 El programador revisará tu mensaje y confirmará la reunión en la plataforma.`;
 
     this.mostrarFeedback(feedback, resumen, true);
 
-    // (Opcional) Limpiar mensaje
+
     messageInput.value = '';
   }
 

@@ -1,6 +1,4 @@
-/* ====================== */
-/*      CONTENEDOR        */
-/* ====================== */
+
 .asesoria-page {
   width: 100%;
   min-height: 100vh;
@@ -9,7 +7,7 @@
   background: radial-gradient(circle at top, #eef2ff, #ffffff);
 }
 
-/* Header */
+
 .asesoria-header {
   max-width: 900px;
   margin: 0 auto 30px auto;
@@ -26,7 +24,7 @@
   color: #6b7280;
 }
 
-/* Layout principal */
+
 .asesoria-layout {
   width: 95%;
   max-width: 1200px;
@@ -36,9 +34,7 @@
   gap: 24px;
 }
 
-/* ====================== */
-/*       CARD PRINCIPAL   */
-/* ====================== */
+
 .asesoria-card {
   background: #ffffffcc;
   backdrop-filter: blur(12px);
@@ -55,9 +51,7 @@
   margin-bottom: 22px;
 }
 
-/* ====================== */
-/*        FORMULARIO      */
-/* ====================== */
+
 .form-group {
   margin-bottom: 18px;
 }
@@ -99,9 +93,7 @@
   color: #6b7280;
 }
 
-/* ====================== */
-/*        FEEDBACK        */
-/* ====================== */
+
 .feedback-box {
   margin-top: 8px;
   font-size: 13px;
@@ -144,9 +136,7 @@
   box-shadow: 0 8px 18px rgba(15, 23, 42, 0.35);
 }
 
-/* ====================== */
-/*      PANEL LATERAL     */
-/* ====================== */
+
 .asesoria-side {
   display: flex;
   flex-direction: column;
@@ -180,9 +170,7 @@
   color: #facc15;
 }
 
-/* ====================== */
-/*       RESPONSIVE       */
-/* ====================== */
+
 @media (max-width: 900px) {
   .asesoria-layout {
     grid-template-columns: minmax(0, 1fr);

@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 declare global {
   interface Window {
@@ -15,23 +16,32 @@ interface PerfilInfo {
   habilidades: string[];
   proyectos: string[];
   foto: string;
+  instagram?: string;
+  github?: string;
+  linkedin?: string;
 }
 
-/* ================= BASE DE DATOS DEL MODAL ================= */
+
 window.hoverInfo = {
   admin1: {
     nombre: 'Jordy Romero',
     rol: 'Lead Developer & Co-Founder',
     habilidades: ['Microservicios', 'React', 'Arquitectura moderna'],
     proyectos: ['Plataforma Cloud X', 'App empresarial'],
-    foto: 'maria.jpg'
+    foto: 'https://avatars.githubusercontent.com/u/236733553?s=400&u=31346ca94ed28cbe136612268be685ec657698cf&v=4',
+    instagram: '//www.instagram.com/jordyromero_?igsh=Z3lpZGRpMnRmNWxh',
+    github: 'https://github.com/JordyRomeroa',
+    linkedin: 'https://linkedin.com/'
   },
   admin2: {
     nombre: 'Nayeli Barbecho',
     rol: 'Technical Lead & Co-Founder',
     habilidades: ['DevOps', 'AWS', 'CI/CD'],
     proyectos: ['Infraestructura Cloud', 'Automatización avanzada'],
-    foto: 'carlos.jpg'
+    foto: 'https://avatars.githubusercontent.com/u/185556763?v=4',
+    instagram: 'https://www.instagram.com/nayeli_barbecho?igsh=MWt6ZnlhbzM2Yjg3ag==',
+    github: 'https://github.com/Nayelic98',
+    linkedin: 'https://linkedin.com/'
   },
 
   prog1: {
@@ -39,49 +49,73 @@ window.hoverInfo = {
     rol: 'Frontend Developer',
     habilidades: ['Angular', 'CSS Animations', 'Optimización UI'],
     proyectos: ['Dashboard UX', 'Landing premium'],
-    foto: 'laura.jpg'
+    foto: 'https://avatars.githubusercontent.com/u/80653319?v=4',
+    instagram: 'https://www.instagram.com/ing_mixhi?igsh=bGcwcXA0aW1zaXN1',
+    github: 'https://github.com/Whiteherobot',
+    linkedin: 'https://linkedin.com/'
   },
+
   prog2: {
     nombre: 'David Villa',
     rol: 'Full Stack Developer',
     habilidades: ['Node.js', 'Angular', 'SQL'],
     proyectos: ['Sistema CRM', 'API escolar'],
-    foto: 'jordy.jpg'
+    foto: 'https://avatars.githubusercontent.com/u/129628781?v=4',
+    instagram: 'https://www.instagram.com/david_villa_hdz?igsh=azJnb2hjNnFqM3pi',
+    github: 'https://github.com/Davidvillahdz',
+    linkedin: 'https://linkedin.com/'
   },
+
   prog3: {
     nombre: 'Michael Franco',
     rol: 'Mobile Developer',
     habilidades: ['Flutter', 'Firebase'],
     proyectos: ['App médica', 'App educativa'],
-    foto: 'karen.jpg'
+    foto: 'https://avatars.githubusercontent.com/u/129219376?v=4',
+    instagram: 'https://www.instagram.com/michi_lata?igsh=eTVkeGg2OXU3OGNq',
+    github: 'https://github.com/michfranko',
+    linkedin: 'https://linkedin.com/'
   },
+
   prog4: {
-    nombre: 'Juan Jose Valarezo',
+    nombre: 'Juan Fernando',
     rol: 'Backend Developer',
     habilidades: ['Node.js', 'Microservicios'],
     proyectos: ['Motor de pagos', 'API financiera'],
-    foto: 'stefany.jpg'
+    foto: 'https://avatars.githubusercontent.com/u/129233783?v=4',
+    instagram: 'https://www.instagram.com/juan_fernando_518?igsh=bnp5bnozZ3RhZG5o',
+    github: 'https://github.com/Juanfernando518',
+    linkedin: 'https://linkedin.com/'
   },
+
   prog5: {
     nombre: 'Luis Torres',
     rol: 'Cloud Engineer',
     habilidades: ['AWS', 'GCP', 'DevOps'],
     proyectos: ['Infraestructura Cloud', 'Optimización de costos'],
-    foto: 'miguel.jpg'
+    foto: 'https://avatars.githubusercontent.com/u/106447112?v=4',
+    instagram: 'https://www.instagram.com/luis_torres2005?igsh=YXJsZm5sdXh3OGdk',
+    github: 'https://github.com/',
+    linkedin: 'https://linkedin.com/'
   },
+
   prog6: {
     nombre: 'Jorge Cueva',
     rol: 'Data Engineer',
     habilidades: ['Python', 'ETL', 'BigQuery'],
     proyectos: ['Data Lake empresarial', 'Pipelines ETL'],
-    foto: 'miguel.jpg'
+    foto: 'https://avatars.githubusercontent.com/u/100741077?v=4',
+    instagram: 'https://www.instagram.com/sir_yorch?igsh=NnJqeW44M2V2dmNq',
+    github: 'https://github.com/SirYorch',
+    linkedin: 'https://linkedin.com/'
   }
 };
 
 @Component({
   selector: 'app-equipo',
   templateUrl: './equipo.component.html',
-  styleUrls: ['./equipo.component.css']
+  styleUrls: ['./equipo.component.css'],
+  imports: [NavbarComponent]
 })
 export class EquipoComponent implements OnInit, OnDestroy {
 
@@ -124,11 +158,14 @@ export class EquipoComponent implements OnInit, OnDestroy {
     this.carousel.style.transform = `translateX(-${offset}px)`;
   }
 
-  /* ================= MODAL ================= */
   openModal(id: string): void {
     const info = window.hoverInfo[id];
 
-    (document.getElementById("modal-img") as HTMLImageElement).src = `assets/${info.foto}`;
+    const imgEl = document.getElementById("modal-img") as HTMLImageElement;
+    const foto = info.foto.trim();
+
+    imgEl.src = foto.startsWith("http") ? foto : `assets/${foto}`;
+
     document.getElementById("modal-nombre")!.innerText = info.nombre;
     document.getElementById("modal-rol")!.innerText = info.rol;
 

@@ -1,4 +1,4 @@
-/* Animaciones */
+
 @keyframes fade { from { opacity: 0; transform: translateY(20px);} to { opacity: 1; transform: translateY(0);} }
 .fade { animation: fade 0.8s ease; }
 
@@ -11,14 +11,14 @@
 }
 .bounce { animation: bounce 2s infinite; }
 
-/* Contenedor general */
+
 .contact-container {
   max-width: 1150px;
   margin: auto;
   padding: 60px 30px;
 }
 
-/* HERO */
+
 .contact-hero {
   text-align: center;
   margin-bottom: 40px;
@@ -33,7 +33,7 @@
   font-size: 16px;
 }
 
-/* TARJETAS CONTACTO */
+
 .contact-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -57,7 +57,6 @@
   color: #242424;
 }
 
-/* FORMULARIO */
 .contact-form {
   background: white;
   padding: 40px;
@@ -83,7 +82,7 @@ input, textarea {
 }
 textarea { height: 140px; }
 
-/* BOTÓN */
+
 .btn-dark {
   background: black;
   color: white;
@@ -97,7 +96,7 @@ textarea { height: 140px; }
   transform: scale(1.03);
 }
 
-/* MAPA */
+
 .map-section h2 {
   text-align: center;
   margin-bottom: 20px;
@@ -115,7 +114,7 @@ textarea { height: 140px; }
   border: none;
 }
 
-/* FAQ */
+
 .faq-section h2 {
   text-align: center;
   margin-bottom: 20px;
@@ -145,7 +144,7 @@ textarea { height: 140px; }
   margin-top: 10px;
 }
 
-/* BOTÓN WHATSAPP FLOTANTE */
+
 .whatsapp-float {
   position: fixed;
   bottom: 30px;
@@ -168,7 +167,7 @@ textarea { height: 140px; }
   transform: scale(1.12);
 }
 
-/* RESPONSIVE */
+
 @media(max-width: 700px) {
   .contact-hero h1 {
     font-size: 34px;
